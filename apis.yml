@@ -1,0 +1,18 @@
+aid: manhattan-associates
+url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/apis.yml
+apis:
+- aid: manhattan-associates:manhattan-associates-api
+  name: Manhattan Associates TMS/WMS API
+  tags:
+  - Logistics
+  - Warehouse
+  - Transportation
+  - Supply Chain
+  image: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
+  humanURL: https://www.manh.com/
+  baseURL: https://api.manh.example.com
+  properties:
+  - url: https://www.manh.com/
+    type: Documentation
+  description: >-
+    Manhattan Associates provides warehouse management (WMS) and transportation management (TMS) APIs for supply chain execution. APIs enable order management, inventory tracking, shipment planning, labor management, and yard management for distribution and logistics operations.
