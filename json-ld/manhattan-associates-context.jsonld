@@ -1,0 +1,74 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "manh": "https://developer.manh.com/ontology/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Order": "schema:Order",
+    "orderId": "schema:identifier",
+    "externalOrderId": { "@id": "schema:orderNumber" },
+    "status": "schema:orderStatus",
+    "orderDate": {
+      "@id": "schema:orderDate",
+      "@type": "xsd:dateTime"
+    },
+    "customerId": { "@id": "schema:customer" },
+    "shippingAddress": "schema:shippingAddress",
+    "Address": "schema:PostalAddress",
+    "firstName": "schema:givenName",
+    "lastName": "schema:familyName",
+    "street1": "schema:streetAddress",
+    "city": "schema:addressLocality",
+    "state": "schema:addressRegion",
+    "postalCode": "schema:postalCode",
+    "country": "schema:addressCountry",
+    "phone": "schema:telephone",
+    "lines": {
+      "@id": "schema:orderedItem",
+      "@container": "@set"
+    },
+    "OrderLine": "schema:OrderItem",
+    "lineId": "schema:identifier",
+    "itemId": { "@id": "schema:orderItemNumber" },
+    "sku": "schema:sku",
+    "description": "schema:description",
+    "quantity": {
+      "@id": "schema:orderQuantity",
+      "@type": "xsd:decimal"
+    },
+    "unitPrice": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "totals": "schema:priceSpecification",
+    "orderTotal": {
+      "@id": "schema:totalPrice",
+      "@type": "xsd:decimal"
+    },
+    "currency": "schema:priceCurrency",
+    "fulfillments": {
+      "@id": "schema:delivery",
+      "@container": "@set"
+    },
+    "Fulfillment": "schema:ParcelDelivery",
+    "trackingNumber": "schema:trackingNumber",
+    "carrier": "schema:deliveryMethod",
+    "estimatedDeliveryDate": {
+      "@id": "schema:expectedArrivalFrom",
+      "@type": "xsd:date"
+    },
+    "shippedAt": {
+      "@id": "schema:departureTime",
+      "@type": "xsd:dateTime"
+    },
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json",
+  "title": "Manhattan Active Order",
+  "description": "An omnichannel order managed by Manhattan Active Omni",
+  "type": "object",
+  "required": ["orderId", "channelId", "customerId", "status", "lines"],
+  "properties": {
+    "orderId": {
+      "type": "string",
+      "description": "Internal order identifier"
+    },
+    "externalOrderId": {
+      "type": "string",
+      "description": "Channel or customer order number"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["created", "allocated", "released", "shipped", "delivered", "cancelled", "returned"]
+    },
+    "channelId": {
+      "type": "string",
+      "description": "Originating sales channel identifier"
+    },
+    "customerId": {
+      "type": "string"
+    },
+    "orderDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "requiredDeliveryDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "shippingAddress": {
+      "$ref": "#/$defs/Address"
+    },
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/OrderLine"
+      }
+    },
+    "totals": {
+      "$ref": "#/$defs/OrderTotals"
+    },
+    "fulfillments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Fulfillment"
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "OrderLine": {
+      "type": "object",
+      "required": ["lineId", "itemId", "quantity"],
+      "properties": {
+        "lineId": { "type": "string" },
+        "externalLineId": { "type": "string" },
+        "itemId": { "type": "string" },
+        "sku": { "type": "string" },
+        "description": { "type": "string" },
+        "quantity": { "type": "number", "minimum": 0 },
+        "unitPrice": { "type": "number", "minimum": 0 },
+        "status": {
+          "type": "string",
+          "enum": ["open", "allocated", "released", "shipped", "delivered", "cancelled"]
+        },
+        "fulfillmentNodeId": { "type": "string" }
+      }
+    },
+    "OrderTotals": {
+      "type": "object",
+      "properties": {
+        "subtotal": { "type": "number" },
+        "taxTotal": { "type": "number" },
+        "shippingTotal": { "type": "number" },
+        "discountTotal": { "type": "number" },
+        "orderTotal": { "type": "number" },
+        "currency": { "type": "string", "default": "USD" }
+      }
+    },
+    "Fulfillment": {
+      "type": "object",
+      "properties": {
+        "fulfillmentId": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["ship_from_store", "ship_from_dc", "in_store_pickup", "curbside_pickup"]
+        },
+        "nodeId": { "type": "string" },
+        "nodeName": { "type": "string" },
+        "status": { "type": "string" },
+        "trackingNumber": { "type": "string" },
+        "carrier": { "type": "string" },
+        "estimatedDeliveryDate": { "type": "string", "format": "date" },
+        "shippedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "required": ["street1", "city", "state", "postalCode", "country"],
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "street1": { "type": "string" },
+        "street2": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "postalCode": { "type": "string" },
+        "country": { "type": "string" },
+        "phone": { "type": "string" }
+      }
+    }
+  }
+}

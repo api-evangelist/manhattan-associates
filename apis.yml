@@ -33,6 +33,12 @@ apis:
   properties:
   - url: https://omni.developer.manh.com/
     type: Documentation
+  - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml
+    type: OpenAPI
+  - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+    type: JSONSchema
+  - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+    type: JSONLDContext
   description: >-
     Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.
 - aid: manhattan-associates:manhattan-active-supply-chain-api
@@ -48,6 +54,8 @@ apis:
   properties:
   - url: https://supplychain.developer.manh.com/
     type: Documentation
+  - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml
+    type: OpenAPI
   description: >-
     Manhattan Active Supply Chain APIs provide warehouse management (WMS) capabilities including inventory tracking, order processing, labor management, yard management, and shipment execution for distribution center operations.
 - aid: manhattan-associates:manhattan-active-supply-chain-planning-api
@@ -99,6 +107,14 @@ common:
   type: Blog
 - url: https://www.manh.com/trust-center
   type: Support
+- url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml
+  type: OpenAPI
+- url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml
+  type: OpenAPI
+- url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+  type: JSONSchema
+- url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+  type: JSONLDContext
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
