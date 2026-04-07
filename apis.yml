@@ -1,16 +1,14 @@
 aid: manhattan-associates
-url: 
-  https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/apis.yml
 apis:
   - aid: manhattan-associates:manhattan-active-platform-api
     name: Manhattan Active Platform API
     tags:
       - Logistics
-      - Supply Chain
       - Platform
       - SaaS
-    image: 
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
+      - Supply Chain
+    image: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
     humanURL: https://platform.developer.manh.com/
     baseURL: https://api.developer.manh.com
     properties:
@@ -28,25 +26,21 @@ apis:
   - aid: manhattan-associates:manhattan-active-omni-api
     name: Manhattan Active Omni and Enterprise Promise & Fulfill API
     tags:
-      - Logistics
-      - Order Management
       - Fulfillment
+      - Logistics
       - Omnichannel
-    image: 
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
+      - Order Management
+    image: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
     humanURL: https://omni.developer.manh.com/
     baseURL: https://api.developer.manh.com
     properties:
       - url: https://omni.developer.manh.com/
         type: Documentation
-      - url: 
-          https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml
+      - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml
         type: OpenAPI
-      - url: 
-          https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+      - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
         type: JSONSchema
-      - url: 
-          https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+      - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
         type: JSONLDContext
     description: >-
       Manhattan Active Omni APIs enable omnichannel order management and fulfillment,
@@ -56,18 +50,16 @@ apis:
     name: Manhattan Active Supply Chain API
     tags:
       - Logistics
-      - Warehouse
       - Supply Chain
+      - Warehouse
       - WMS
-    image: 
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
+    image: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
     humanURL: https://supplychain.developer.manh.com/
     baseURL: https://api.developer.manh.com
     properties:
       - url: https://supplychain.developer.manh.com/
         type: Documentation
-      - url: 
-          https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml
+      - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml
         type: OpenAPI
     description: >-
       Manhattan Active Supply Chain APIs provide warehouse management (WMS) capabilities
@@ -76,12 +68,11 @@ apis:
   - aid: manhattan-associates:manhattan-active-supply-chain-planning-api
     name: Manhattan Active Supply Chain Planning API
     tags:
-      - Logistics
-      - Supply Chain
-      - Planning
       - Inventory Planning
-    image: 
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
+      - Logistics
+      - Planning
+      - Supply Chain
+    image: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
     humanURL: https://scp.developer.manh.com/
     baseURL: https://api.developer.manh.com
     properties:
@@ -95,11 +86,10 @@ apis:
     name: Manhattan Associates TMS/WMS API
     tags:
       - Logistics
-      - Warehouse
-      - Transportation
       - Supply Chain
-    image: 
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
+      - Transportation
+      - Warehouse
+    image: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
     humanURL: https://www.manh.com/
     baseURL: https://api.manh.example.com
     properties:
@@ -129,17 +119,13 @@ common:
     type: Blog
   - url: https://www.manh.com/trust-center
     type: Support
-  - url: 
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml
+  - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml
     type: OpenAPI
-  - url: 
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml
+  - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml
     type: OpenAPI
-  - url: 
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+  - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
     type: JSONSchema
-  - url: 
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+  - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
     type: JSONLDContext
 maintainer:
   name: Kin Lane

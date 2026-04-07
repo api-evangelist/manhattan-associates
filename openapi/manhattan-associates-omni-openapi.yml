@@ -560,9 +560,9 @@ components:
                 items:
                   type: object
                   properties:
-                    nodeId: { type: string }
-                    nodeName: { type: string }
-                    availableQuantity: { type: number }
+                    nodeId: {type: string}
+                    nodeName: {type: string}
+                    availableQuantity: {type: number}
     InventoryPosition:
       type: object
       properties:
@@ -606,8 +606,8 @@ components:
               - itemId
               - quantity
             properties:
-              itemId: { type: string }
-              quantity: { type: number }
+              itemId: {type: string}
+              quantity: {type: number}
         deliveryAddress:
           $ref: '#/components/schemas/Address'
         channelId:
@@ -639,8 +639,8 @@ components:
                 items:
                   type: object
                   properties:
-                    itemId: { type: string }
-                    promisedQuantity: { type: number }
+                    itemId: {type: string}
+                    promisedQuantity: {type: number}
     Return:
       type: object
       properties:
@@ -658,10 +658,10 @@ components:
           items:
             type: object
             properties:
-              lineId: { type: string }
-              itemId: { type: string }
-              quantity: { type: number }
-              refundAmount: { type: number }
+              lineId: {type: string}
+              itemId: {type: string}
+              quantity: {type: number}
+              refundAmount: {type: number}
         createdAt:
           type: string
           format: date-time
@@ -684,8 +684,8 @@ components:
               - lineId
               - quantity
             properties:
-              lineId: { type: string }
-              quantity: { type: number }
+              lineId: {type: string}
+              quantity: {type: number}
     ErrorResponse:
       type: object
       properties:
@@ -698,13 +698,13 @@ components:
           items:
             type: object
             properties:
-              field: { type: string }
-              message: { type: string }
+              field: {type: string}
+              message: {type: string}
 tags:
-  - name: Orders
-    description: Order lifecycle and management
   - name: Inventory
     description: Real-time inventory positions and ATP
+  - name: Orders
+    description: Order lifecycle and management
   - name: Promising
     description: Order promising and delivery date estimation
   - name: Returns
