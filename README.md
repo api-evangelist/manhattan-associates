@@ -1,10 +1,11 @@
-# Unknown (manhattan-associates)
+# Manhattan Associates (manhattan-associates)
+Manhattan Associates is a leading provider of supply chain commerce solutions, enabling unified commerce across stores, warehouses, and inventory across the supply chain.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/apis.yml)
 
 ## Timestamps
 
-- **Modified:** 2026-03-18 
+- **Modified:** 2026-04-28 
 
 ## APIs
 
@@ -95,7 +96,14 @@ Manhattan Associates provides warehouse management (WMS) and transportation mana
 - [PrivacyPolicy](https://www.manh.com/privacy-policy)
 - [Blog](https://www.manh.com/our-insights/resources/blog)
 - [Support](https://www.manh.com/trust-center)
+- [DeveloperTools](https://www.manh.com/solutions/manhattan-active-platform/developer-tools-api)
 - [OpenAPI](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml)
 - [OpenAPI](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml)
 - [JSONSchema](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json)
 - [JSONLDContext](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld)
+
+## Maintainers
+
+**FN:** Kin Lane
+
+**Email:** kin@apievangelist.com
