@@ -1,0 +1,428 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Manhattan Active Omni Order Management API
+  description: Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising,
+    order orchestration, inventory availability, and customer service operations for retail and distribution.
+  tags:
+  - Manhattan
+  - Associates
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: manhattan-associates
+    baseUri: https://api.developer.manh.com/omni/v1
+    description: Manhattan Active Omni Order Management API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{MANHATTAN_ASSOCIATES_TOKEN}}'
+    resources:
+    - name: orders
+      path: /orders
+      operations:
+      - name: listorders
+        method: GET
+        description: List orders
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+        - name: customerId
+          in: query
+          type: string
+        - name: channelId
+          in: query
+          type: string
+        - name: orderDateFrom
+          in: query
+          type: string
+        - name: orderDateTo
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createorder
+        method: POST
+        description: Create an order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: orders-orderid
+      path: /orders/{orderId}
+      operations:
+      - name: getorder
+        method: GET
+        description: Get an order
+        inputParameters:
+        - name: orderId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateorder
+        method: PATCH
+        description: Update an order
+        inputParameters:
+        - name: orderId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: orders-orderid-cancel
+      path: /orders/{orderId}/cancel
+      operations:
+      - name: cancelorder
+        method: POST
+        description: Cancel an order
+        inputParameters:
+        - name: orderId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: inventory-availability
+      path: /inventory/availability
+      operations:
+      - name: checkinventoryavailability
+        method: POST
+        description: Check inventory availability
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: inventory-positions
+      path: /inventory/positions
+      operations:
+      - name: getinventorypositions
+        method: GET
+        description: Get inventory positions
+        inputParameters:
+        - name: itemId
+          in: query
+          type: string
+        - name: locationId
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: promise-check
+      path: /promise/check
+      operations:
+      - name: checkorderpromise
+        method: POST
+        description: Check order promise (ATP)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: returns
+      path: /returns
+      operations:
+      - name: createreturn
+        method: POST
+        description: Create a return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: manhattan-associates-rest
+    description: REST adapter for Manhattan Active Omni Order Management API.
+    resources:
+    - path: /orders
+      name: listorders
+      operations:
+      - method: GET
+        name: listorders
+        description: List orders
+        call: manhattan-associates.listorders
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /orders
+      name: createorder
+      operations:
+      - method: POST
+        name: createorder
+        description: Create an order
+        call: manhattan-associates.createorder
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /orders/{orderId}
+      name: getorder
+      operations:
+      - method: GET
+        name: getorder
+        description: Get an order
+        call: manhattan-associates.getorder
+        with:
+          orderId: rest.orderId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /orders/{orderId}
+      name: updateorder
+      operations:
+      - method: PATCH
+        name: updateorder
+        description: Update an order
+        call: manhattan-associates.updateorder
+        with:
+          orderId: rest.orderId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /orders/{orderId}/cancel
+      name: cancelorder
+      operations:
+      - method: POST
+        name: cancelorder
+        description: Cancel an order
+        call: manhattan-associates.cancelorder
+        with:
+          orderId: rest.orderId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /inventory/availability
+      name: checkinventoryavailability
+      operations:
+      - method: POST
+        name: checkinventoryavailability
+        description: Check inventory availability
+        call: manhattan-associates.checkinventoryavailability
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /inventory/positions
+      name: getinventorypositions
+      operations:
+      - method: GET
+        name: getinventorypositions
+        description: Get inventory positions
+        call: manhattan-associates.getinventorypositions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /promise/check
+      name: checkorderpromise
+      operations:
+      - method: POST
+        name: checkorderpromise
+        description: Check order promise (ATP)
+        call: manhattan-associates.checkorderpromise
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /returns
+      name: createreturn
+      operations:
+      - method: POST
+        name: createreturn
+        description: Create a return
+        call: manhattan-associates.createreturn
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: manhattan-associates-mcp
+    transport: http
+    description: MCP adapter for Manhattan Active Omni Order Management API for AI agent use.
+    tools:
+    - name: listorders
+      description: List orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: manhattan-associates.listorders
+      with:
+        status: tools.status
+        customerId: tools.customerId
+        channelId: tools.channelId
+        orderDateFrom: tools.orderDateFrom
+        orderDateTo: tools.orderDateTo
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: status
+        type: string
+        description: status
+      - name: customerId
+        type: string
+        description: customerId
+      - name: channelId
+        type: string
+        description: channelId
+      - name: orderDateFrom
+        type: string
+        description: orderDateFrom
+      - name: orderDateTo
+        type: string
+        description: orderDateTo
+      - name: limit
+        type: integer
+        description: limit
+      - name: offset
+        type: integer
+        description: offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createorder
+      description: Create an order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: manhattan-associates.createorder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getorder
+      description: Get an order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: manhattan-associates.getorder
+      with:
+        orderId: tools.orderId
+      inputParameters:
+      - name: orderId
+        type: string
+        description: orderId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateorder
+      description: Update an order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: manhattan-associates.updateorder
+      with:
+        orderId: tools.orderId
+      inputParameters:
+      - name: orderId
+        type: string
+        description: orderId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancelorder
+      description: Cancel an order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: manhattan-associates.cancelorder
+      with:
+        orderId: tools.orderId
+      inputParameters:
+      - name: orderId
+        type: string
+        description: orderId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: checkinventoryavailability
+      description: Check inventory availability
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: manhattan-associates.checkinventoryavailability
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getinventorypositions
+      description: Get inventory positions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: manhattan-associates.getinventorypositions
+      with:
+        itemId: tools.itemId
+        locationId: tools.locationId
+        limit: tools.limit
+      inputParameters:
+      - name: itemId
+        type: string
+        description: itemId
+      - name: locationId
+        type: string
+        description: locationId
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: checkorderpromise
+      description: Check order promise (ATP)
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: manhattan-associates.checkorderpromise
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createreturn
+      description: Create a return
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: manhattan-associates.createreturn
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    MANHATTAN_ASSOCIATES_TOKEN: MANHATTAN_ASSOCIATES_TOKEN
