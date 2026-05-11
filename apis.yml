@@ -127,6 +127,8 @@ common:
     type: JSONSchema
   - url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
     type: JSONLDContext
+  - type: Integrations
+    url: https://www.manh.com/about-us/partners
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
@@ -134,3 +136,5 @@ modified: '2026-04-28'
 description: >-
   Manhattan Associates is a leading provider of supply chain commerce solutions, enabling
   unified commerce across stores, warehouses, and inventory across the supply chain.
+integrations:
+  - name: Facebook
