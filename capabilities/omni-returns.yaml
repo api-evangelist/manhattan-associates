@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Manhattan Active Omni Order Management API — Returns
+  description: 'Manhattan Active Omni Order Management API — Returns. 1 operations. Lead operation: Create a return. Self-contained
+    Naftiko capability covering one Manhattan Associates business surface.'
+  tags:
+  - Manhattan Associates
+  - Returns
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MANHATTAN_ASSOCIATES_API_KEY: MANHATTAN_ASSOCIATES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: omni-returns
+    baseUri: https://api.developer.manh.com/omni/v1
+    description: Manhattan Active Omni Order Management API — Returns business capability. Self-contained, no shared references.
+    resources:
+    - name: returns
+      path: /returns
+      operations:
+      - name: createreturn
+        method: POST
+        description: Create a return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MANHATTAN_ASSOCIATES_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: omni-returns-rest
+    port: 8080
+    description: REST adapter for Manhattan Active Omni Order Management API — Returns. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/returns
+      name: returns
+      description: REST surface for returns.
+      operations:
+      - method: POST
+        name: createreturn
+        description: Create a return
+        call: omni-returns.createreturn
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: omni-returns-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Manhattan Active Omni Order Management API — Returns. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: create-return
+      description: Create a return
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: omni-returns.createreturn
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

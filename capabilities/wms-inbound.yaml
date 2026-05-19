@@ -1,0 +1,169 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Manhattan Active Supply Chain (WMS) API — Inbound
+  description: 'Manhattan Active Supply Chain (WMS) API — Inbound. 3 operations. Lead operation: List inbound receipts. Self-contained
+    Naftiko capability covering one Manhattan Associates business surface.'
+  tags:
+  - Manhattan Associates
+  - Inbound
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MANHATTAN_ASSOCIATES_API_KEY: MANHATTAN_ASSOCIATES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wms-inbound
+    baseUri: https://api.developer.manh.com/wms/v1
+    description: Manhattan Active Supply Chain (WMS) API — Inbound business capability. Self-contained, no shared references.
+    resources:
+    - name: receipts
+      path: /receipts
+      operations:
+      - name: listreceipts
+        method: GET
+        description: List inbound receipts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+        - name: facilityId
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+      - name: createreceipt
+        method: POST
+        description: Create an advance shipment notice (ASN)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: receipts-receiptId
+      path: /receipts/{receiptId}
+      operations:
+      - name: getreceipt
+        method: GET
+        description: Get receipt details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: receiptId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MANHATTAN_ASSOCIATES_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: wms-inbound-rest
+    port: 8080
+    description: REST adapter for Manhattan Active Supply Chain (WMS) API — Inbound. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/receipts
+      name: receipts
+      description: REST surface for receipts.
+      operations:
+      - method: GET
+        name: listreceipts
+        description: List inbound receipts
+        call: wms-inbound.listreceipts
+        with:
+          status: rest.status
+          facilityId: rest.facilityId
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createreceipt
+        description: Create an advance shipment notice (ASN)
+        call: wms-inbound.createreceipt
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/receipts/{receiptid}
+      name: receipts-receiptid
+      description: REST surface for receipts-receiptId.
+      operations:
+      - method: GET
+        name: getreceipt
+        description: Get receipt details
+        call: wms-inbound.getreceipt
+        with:
+          receiptId: rest.receiptId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wms-inbound-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Manhattan Active Supply Chain (WMS) API — Inbound. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-inbound-receipts
+      description: List inbound receipts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wms-inbound.listreceipts
+      with:
+        status: tools.status
+        facilityId: tools.facilityId
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-advance-shipment-notice-asn
+      description: Create an advance shipment notice (ASN)
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wms-inbound.createreceipt
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-receipt-details
+      description: Get receipt details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wms-inbound.getreceipt
+      with:
+        receiptId: tools.receiptId
+      outputParameters:
+      - type: object
+        mapping: $.

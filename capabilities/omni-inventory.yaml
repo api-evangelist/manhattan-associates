@@ -1,0 +1,130 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Manhattan Active Omni Order Management API — Inventory
+  description: 'Manhattan Active Omni Order Management API — Inventory. 2 operations. Lead operation: Check inventory availability.
+    Self-contained Naftiko capability covering one Manhattan Associates business surface.'
+  tags:
+  - Manhattan Associates
+  - Inventory
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MANHATTAN_ASSOCIATES_API_KEY: MANHATTAN_ASSOCIATES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: omni-inventory
+    baseUri: https://api.developer.manh.com/omni/v1
+    description: Manhattan Active Omni Order Management API — Inventory business capability. Self-contained, no shared references.
+    resources:
+    - name: inventory-availability
+      path: /inventory/availability
+      operations:
+      - name: checkinventoryavailability
+        method: POST
+        description: Check inventory availability
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: inventory-positions
+      path: /inventory/positions
+      operations:
+      - name: getinventorypositions
+        method: GET
+        description: Get inventory positions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: itemId
+          in: query
+          type: string
+        - name: locationId
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+    authentication:
+      type: bearer
+      token: '{{env.MANHATTAN_ASSOCIATES_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: omni-inventory-rest
+    port: 8080
+    description: REST adapter for Manhattan Active Omni Order Management API — Inventory. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/inventory/availability
+      name: inventory-availability
+      description: REST surface for inventory-availability.
+      operations:
+      - method: POST
+        name: checkinventoryavailability
+        description: Check inventory availability
+        call: omni-inventory.checkinventoryavailability
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/inventory/positions
+      name: inventory-positions
+      description: REST surface for inventory-positions.
+      operations:
+      - method: GET
+        name: getinventorypositions
+        description: Get inventory positions
+        call: omni-inventory.getinventorypositions
+        with:
+          itemId: rest.itemId
+          locationId: rest.locationId
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: omni-inventory-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Manhattan Active Omni Order Management API — Inventory. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: check-inventory-availability
+      description: Check inventory availability
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: omni-inventory.checkinventoryavailability
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-inventory-positions
+      description: Get inventory positions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: omni-inventory.getinventorypositions
+      with:
+        itemId: tools.itemId
+        locationId: tools.locationId
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
