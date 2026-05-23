@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WarehouseInventoryRecord",
+  "title": "WarehouseInventoryRecord",
+  "type": "object",
+  "properties": {
+    "itemId": {
+      "type": "string"
+    },
+    "facilityId": {
+      "type": "string"
+    },
+    "locationId": {
+      "type": "string"
+    },
+    "locationName": {
+      "type": "string"
+    },
+    "lotNumber": {
+      "type": "string"
+    },
+    "onHandQuantity": {
+      "type": "number"
+    },
+    "allocatedQuantity": {
+      "type": "number"
+    },
+    "availableQuantity": {
+      "type": "number"
+    },
+    "uom": {
+      "type": "string"
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

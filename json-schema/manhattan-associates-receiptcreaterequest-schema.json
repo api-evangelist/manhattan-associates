@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReceiptCreateRequest",
+  "title": "ReceiptCreateRequest",
+  "type": "object",
+  "required": [
+    "facilityId",
+    "supplierId",
+    "lines"
+  ],
+  "properties": {
+    "externalASNId": {
+      "type": "string"
+    },
+    "facilityId": {
+      "type": "string"
+    },
+    "supplierId": {
+      "type": "string"
+    },
+    "expectedArrivalDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/components/schemas/ReceiptLineRequest"
+      }
+    }
+  }
+}

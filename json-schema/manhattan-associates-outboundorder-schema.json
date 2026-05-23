@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutboundOrder",
+  "title": "OutboundOrder",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "string"
+    },
+    "externalOrderId": {
+      "type": "string"
+    },
+    "facilityId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "released",
+        "picking",
+        "packing",
+        "ready_to_ship",
+        "shipped"
+      ]
+    },
+    "shipToAddress": {
+      "$ref": "#/components/schemas/ShipAddress"
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OutboundLine"
+      }
+    },
+    "waveId": {
+      "type": "string"
+    },
+    "carrier": {
+      "type": "string"
+    },
+    "trackingNumber": {
+      "type": "string"
+    },
+    "shippedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

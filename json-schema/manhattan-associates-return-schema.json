@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Return",
+  "title": "Return",
+  "type": "object",
+  "properties": {
+    "returnId": {
+      "type": "string"
+    },
+    "orderId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "created",
+        "in_transit",
+        "received",
+        "completed",
+        "denied"
+      ]
+    },
+    "reason": {
+      "type": "string"
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "lineId": {
+            "type": "string"
+          },
+          "itemId": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "refundAmount": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

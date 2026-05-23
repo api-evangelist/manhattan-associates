@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Fulfillment",
+  "title": "Fulfillment",
+  "type": "object",
+  "properties": {
+    "fulfillmentId": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ship_from_store",
+        "ship_from_dc",
+        "in_store_pickup",
+        "curbside_pickup"
+      ]
+    },
+    "nodeId": {
+      "type": "string"
+    },
+    "nodeName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "trackingNumber": {
+      "type": "string"
+    },
+    "carrier": {
+      "type": "string"
+    },
+    "estimatedDeliveryDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "shippedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

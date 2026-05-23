@@ -1,0 +1,13 @@
+name: Manhattan-Associates Domain Vocabulary
+provider: Manhattan-Associates
+providerId: manhattan-associates
+description: Tag-derived vocabulary for the Manhattan-Associates API surface; sourced from openapi/ tags.
+terms:
+- term: Inventory
+  description: Real-time inventory positions and ATP
+- term: Orders
+  description: Order lifecycle and management
+- term: Promising
+  description: Order promising and delivery date estimation
+- term: Returns
+  description: Return and exchange processing

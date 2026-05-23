@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrderLine",
+  "title": "OrderLine",
+  "type": "object",
+  "properties": {
+    "lineId": {
+      "type": "string"
+    },
+    "externalLineId": {
+      "type": "string"
+    },
+    "itemId": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number"
+    },
+    "unitPrice": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "allocated",
+        "released",
+        "shipped",
+        "delivered",
+        "cancelled"
+      ]
+    },
+    "fulfillmentNodeId": {
+      "type": "string"
+    }
+  }
+}

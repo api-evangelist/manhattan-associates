@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ShipmentConfirmRequest",
+  "title": "ShipmentConfirmRequest",
+  "type": "object",
+  "required": [
+    "carrier",
+    "trackingNumber"
+  ],
+  "properties": {
+    "carrier": {
+      "type": "string"
+    },
+    "trackingNumber": {
+      "type": "string"
+    },
+    "shippedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "weight": {
+      "type": "number"
+    },
+    "weightUom": {
+      "type": "string"
+    }
+  }
+}

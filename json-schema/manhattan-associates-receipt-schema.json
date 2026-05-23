@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Receipt",
+  "title": "Receipt",
+  "type": "object",
+  "properties": {
+    "receiptId": {
+      "type": "string"
+    },
+    "externalASNId": {
+      "type": "string"
+    },
+    "facilityId": {
+      "type": "string"
+    },
+    "supplierId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "expected",
+        "in_progress",
+        "completed",
+        "closed"
+      ]
+    },
+    "expectedArrivalDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReceiptLine"
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

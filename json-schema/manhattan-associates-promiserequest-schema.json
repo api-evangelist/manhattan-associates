@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PromiseRequest",
+  "title": "PromiseRequest",
+  "type": "object",
+  "required": [
+    "lines",
+    "deliveryAddress"
+  ],
+  "properties": {
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "itemId",
+          "quantity"
+        ],
+        "properties": {
+          "itemId": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "deliveryAddress": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "channelId": {
+      "type": "string"
+    },
+    "requestedDeliveryDate": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

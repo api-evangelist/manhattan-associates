@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrderTotals",
+  "title": "OrderTotals",
+  "type": "object",
+  "properties": {
+    "subtotal": {
+      "type": "number"
+    },
+    "taxTotal": {
+      "type": "number"
+    },
+    "shippingTotal": {
+      "type": "number"
+    },
+    "discountTotal": {
+      "type": "number"
+    },
+    "orderTotal": {
+      "type": "number"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    }
+  }
+}

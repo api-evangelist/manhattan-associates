@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutboundOrderCreateRequest",
+  "title": "OutboundOrderCreateRequest",
+  "type": "object",
+  "required": [
+    "facilityId",
+    "shipToAddress",
+    "lines"
+  ],
+  "properties": {
+    "externalOrderId": {
+      "type": "string"
+    },
+    "facilityId": {
+      "type": "string"
+    },
+    "shipToAddress": {
+      "$ref": "#/components/schemas/ShipAddress"
+    },
+    "requestedShipDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "carrier": {
+      "type": "string"
+    },
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "itemId",
+          "quantity"
+        ],
+        "properties": {
+          "itemId": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "uom": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

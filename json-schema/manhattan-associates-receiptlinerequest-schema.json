@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReceiptLineRequest",
+  "title": "ReceiptLineRequest",
+  "type": "object",
+  "required": [
+    "itemId",
+    "expectedQuantity"
+  ],
+  "properties": {
+    "itemId": {
+      "type": "string"
+    },
+    "expectedQuantity": {
+      "type": "number"
+    },
+    "uom": {
+      "type": "string"
+    },
+    "lotNumber": {
+      "type": "string"
+    }
+  }
+}

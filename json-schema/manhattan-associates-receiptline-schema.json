@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReceiptLine",
+  "title": "ReceiptLine",
+  "type": "object",
+  "properties": {
+    "lineId": {
+      "type": "string"
+    },
+    "itemId": {
+      "type": "string"
+    },
+    "expectedQuantity": {
+      "type": "number"
+    },
+    "receivedQuantity": {
+      "type": "number"
+    },
+    "uom": {
+      "type": "string"
+    },
+    "lotNumber": {
+      "type": "string"
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

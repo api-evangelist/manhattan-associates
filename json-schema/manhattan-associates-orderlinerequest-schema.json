@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrderLineRequest",
+  "title": "OrderLineRequest",
+  "type": "object",
+  "required": [
+    "itemId",
+    "quantity"
+  ],
+  "properties": {
+    "externalLineId": {
+      "type": "string"
+    },
+    "itemId": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number",
+      "minimum": 1
+    },
+    "unitPrice": {
+      "type": "number"
+    }
+  }
+}

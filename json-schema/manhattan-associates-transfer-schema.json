@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Transfer",
+  "title": "Transfer",
+  "type": "object",
+  "properties": {
+    "transferId": {
+      "type": "string"
+    },
+    "fromLocationId": {
+      "type": "string"
+    },
+    "toLocationId": {
+      "type": "string"
+    },
+    "facilityId": {
+      "type": "string"
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "lotNumber": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "completed"
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

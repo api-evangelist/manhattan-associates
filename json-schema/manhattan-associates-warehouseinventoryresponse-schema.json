@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WarehouseInventoryResponse",
+  "title": "WarehouseInventoryResponse",
+  "type": "object",
+  "properties": {
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/WarehouseInventoryRecord"
+      }
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

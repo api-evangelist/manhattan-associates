@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransferRequest",
+  "title": "TransferRequest",
+  "type": "object",
+  "required": [
+    "facilityId",
+    "fromLocationId",
+    "toLocationId",
+    "lines"
+  ],
+  "properties": {
+    "facilityId": {
+      "type": "string"
+    },
+    "fromLocationId": {
+      "type": "string"
+    },
+    "toLocationId": {
+      "type": "string"
+    },
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "itemId",
+          "quantity"
+        ],
+        "properties": {
+          "itemId": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "lotNumber": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

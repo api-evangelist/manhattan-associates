@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PromiseResponse",
+  "title": "PromiseResponse",
+  "type": "object",
+  "properties": {
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fulfillmentType": {
+            "type": "string"
+          },
+          "nodeId": {
+            "type": "string"
+          },
+          "estimatedDeliveryDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "shippingMethod": {
+            "type": "string"
+          },
+          "shippingCost": {
+            "type": "number"
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "itemId": {
+                  "type": "string"
+                },
+                "promisedQuantity": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

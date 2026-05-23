@@ -1,0 +1,224 @@
+{
+  "provider": "Manhattan-Associates",
+  "providerId": "manhattan-associates",
+  "kind": "json-structure",
+  "description": "Structural overview of the Manhattan-Associates API surface; extracted from openapi/.",
+  "schemaCount": 18,
+  "operationCount": 9,
+  "schemas": [
+    {
+      "name": "Order",
+      "type": "object",
+      "propertyCount": 13,
+      "required": []
+    },
+    {
+      "name": "OrderCreateRequest",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "channelId",
+        "customerId",
+        "shippingAddress",
+        "lines"
+      ]
+    },
+    {
+      "name": "OrderUpdateRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "OrderListResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "OrderLine",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "OrderLineRequest",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "itemId",
+        "quantity"
+      ]
+    },
+    {
+      "name": "OrderTotals",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Fulfillment",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "Address",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "street1",
+        "city",
+        "state",
+        "postalCode",
+        "country"
+      ]
+    },
+    {
+      "name": "AvailabilityRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "items"
+      ]
+    },
+    {
+      "name": "AvailabilityResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "InventoryPosition",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "InventoryPositionListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PromiseRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "lines",
+        "deliveryAddress"
+      ]
+    },
+    {
+      "name": "PromiseResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Return",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "ReturnRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "orderId",
+        "reason",
+        "lines"
+      ]
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/orders",
+      "operationId": "listOrders",
+      "summary": "List orders",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "operationId": "createOrder",
+      "summary": "Create an order",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/orders/{orderId}",
+      "operationId": "getOrder",
+      "summary": "Get an order",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/orders/{orderId}",
+      "operationId": "updateOrder",
+      "summary": "Update an order",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/orders/{orderId}/cancel",
+      "operationId": "cancelOrder",
+      "summary": "Cancel an order",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/inventory/availability",
+      "operationId": "checkInventoryAvailability",
+      "summary": "Check inventory availability",
+      "tags": [
+        "Inventory"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/inventory/positions",
+      "operationId": "getInventoryPositions",
+      "summary": "Get inventory positions",
+      "tags": [
+        "Inventory"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/promise/check",
+      "operationId": "checkOrderPromise",
+      "summary": "Check order promise (ATP)",
+      "tags": [
+        "Promising"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/returns",
+      "operationId": "createReturn",
+      "summary": "Create a return",
+      "tags": [
+        "Returns"
+      ]
+    }
+  ]
+}

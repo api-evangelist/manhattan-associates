@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutboundLine",
+  "title": "OutboundLine",
+  "type": "object",
+  "properties": {
+    "lineId": {
+      "type": "string"
+    },
+    "itemId": {
+      "type": "string"
+    },
+    "orderedQuantity": {
+      "type": "number"
+    },
+    "pickedQuantity": {
+      "type": "number"
+    },
+    "shippedQuantity": {
+      "type": "number"
+    },
+    "uom": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

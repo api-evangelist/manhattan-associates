@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InventoryPositionListResponse",
+  "title": "InventoryPositionListResponse",
+  "type": "object",
+  "properties": {
+    "positions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InventoryPosition"
+      }
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

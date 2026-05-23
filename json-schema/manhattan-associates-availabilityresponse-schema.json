@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AvailabilityResponse",
+  "title": "AvailabilityResponse",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string"
+          },
+          "requestedQuantity": {
+            "type": "number"
+          },
+          "availableQuantity": {
+            "type": "number"
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "availabilityDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "nodeId": {
+                  "type": "string"
+                },
+                "nodeName": {
+                  "type": "string"
+                },
+                "availableQuantity": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
