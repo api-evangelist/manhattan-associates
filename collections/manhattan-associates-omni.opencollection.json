@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Manhattan Active Omni Order Management API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.developer.manh.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.developer.manh.com/omni/v1/orders",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderDateFrom",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderDateTo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of orders. Supports filtering by status, customer, channel, and date range."
+        },
+        {
+          "info": {
+            "name": "Create an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developer.manh.com/omni/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a new customer order for orchestration. The system performs inventory availability checking and assigns fulfillment nodes."
+        },
+        {
+          "info": {
+            "name": "Get an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.developer.manh.com/omni/v1/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve full details of an order including line items, fulfillment assignments, and shipments."
+        },
+        {
+          "info": {
+            "name": "Update an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.developer.manh.com/omni/v1/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an open order (add/remove lines, change quantities, update addresses)."
+        },
+        {
+          "info": {
+            "name": "Cancel an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developer.manh.com/omni/v1/orders/:orderId/cancel",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an order or specific order lines."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check inventory availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developer.manh.com/omni/v1/inventory/availability",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query real-time inventory availability for a list of items across fulfillment nodes, applying ATP (Available to Promise) rules."
+        },
+        {
+          "info": {
+            "name": "Get inventory positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.developer.manh.com/omni/v1/inventory/positions",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve current inventory positions for items across fulfillment locations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Promising",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check order promise (ATP)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developer.manh.com/omni/v1/promise/check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run order promising logic to determine earliest delivery dates, best fulfillment nodes, and shipping options without committing inventory."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Returns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a return",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developer.manh.com/omni/v1/returns",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a customer return or exchange for a fulfilled order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

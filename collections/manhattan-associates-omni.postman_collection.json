@@ -1,0 +1,1292 @@
+{
+  "item": [
+    {
+      "id": "c5c27184-e668-4136-9416-8d1bf95ddbe9",
+      "name": "Inventory",
+      "description": {
+        "content": "Real-time inventory positions and ATP",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1a0a7d5b-5695-49d7-8c74-54e918c5e021",
+          "name": "Check inventory availability",
+          "request": {
+            "name": "Check inventory availability",
+            "description": {
+              "content": "Query real-time inventory availability for a list of items across fulfillment nodes, applying ATP (Available to Promise) rules.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory",
+                "availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"deliveryAddress\": {\n    \"street1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"channelId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bca00308-4e65-4f37-bb00-f70e3ca4314b",
+              "name": "Availability results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"deliveryAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"channelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"itemId\": \"string\",\n      \"requestedQuantity\": 4603.753795884344,\n      \"availableQuantity\": 5301.424207350415,\n      \"available\": true,\n      \"availabilityDate\": \"2006-08-25\",\n      \"nodes\": [\n        {\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"availableQuantity\": 3097.681318225459\n        },\n        {\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"availableQuantity\": 8099.11454564335\n        }\n      ]\n    },\n    {\n      \"itemId\": \"string\",\n      \"requestedQuantity\": 5422.9048578803095,\n      \"availableQuantity\": 9601.96638463195,\n      \"available\": false,\n      \"availabilityDate\": \"1999-07-07\",\n      \"nodes\": [\n        {\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"availableQuantity\": 7975.972617032785\n        },\n        {\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"availableQuantity\": 7696.376569467875\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c472b6a-9958-4718-9dd3-0b90db160554",
+          "name": "Get inventory positions",
+          "request": {
+            "name": "Get inventory positions",
+            "description": {
+              "content": "Retrieve current inventory positions for items across fulfillment locations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory",
+                "positions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "itemId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "locationId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b95b5f1-bf17-4913-b82e-9fe6b13e48cf",
+              "name": "Inventory positions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    "positions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "itemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"positions\": [\n    {\n      \"itemId\": \"string\",\n      \"locationId\": \"string\",\n      \"locationName\": \"string\",\n      \"onHand\": 9637.961787788356,\n      \"reserved\": 4208.4722467654565,\n      \"available\": 5745.111614611742,\n      \"onOrder\": 9064.196103780787,\n      \"updatedAt\": \"1982-09-30T22:06:18.646Z\"\n    },\n    {\n      \"itemId\": \"string\",\n      \"locationId\": \"string\",\n      \"locationName\": \"string\",\n      \"onHand\": 1401.7836041556775,\n      \"reserved\": 2977.316192552123,\n      \"available\": 7901.087762211811,\n      \"onOrder\": 6740.634948711375,\n      \"updatedAt\": \"1950-12-28T03:36:07.492Z\"\n    }\n  ],\n  \"totalCount\": 6452\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "57c9c991-250d-4fe6-84ca-f9e421cb58c6",
+      "name": "Orders",
+      "description": {
+        "content": "Order lifecycle and management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3e1aadc4-17d4-49cc-921d-19ad5df1bf30",
+          "name": "List orders",
+          "request": {
+            "name": "List orders",
+            "description": {
+              "content": "Retrieve a paginated list of orders. Supports filtering by status, customer, channel, and date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "customerId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "channelId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderDateFrom",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderDateTo",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "609b1e5f-a12e-43d3-95e6-5ed525c17413",
+              "name": "List of orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "channelId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderDateFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "orderDateTo",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orders\": [\n    {\n      \"orderId\": \"string\",\n      \"externalOrderId\": \"string\",\n      \"status\": \"returned\",\n      \"channelId\": \"string\",\n      \"customerId\": \"string\",\n      \"orderDate\": \"1982-09-05T10:03:48.724Z\",\n      \"requiredDeliveryDate\": \"1952-07-23\",\n      \"shippingAddress\": {\n        \"street1\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"street2\": \"string\",\n        \"phone\": \"string\"\n      },\n      \"lines\": [\n        {\n          \"lineId\": \"string\",\n          \"externalLineId\": \"string\",\n          \"itemId\": \"string\",\n          \"sku\": \"string\",\n          \"description\": \"string\",\n          \"quantity\": 9588.03722222661,\n          \"unitPrice\": 4189.20457194661,\n          \"status\": \"shipped\",\n          \"fulfillmentNodeId\": \"string\"\n        },\n        {\n          \"lineId\": \"string\",\n          \"externalLineId\": \"string\",\n          \"itemId\": \"string\",\n          \"sku\": \"string\",\n          \"description\": \"string\",\n          \"quantity\": 921.1622010340848,\n          \"unitPrice\": 8618.39232250762,\n          \"status\": \"delivered\",\n          \"fulfillmentNodeId\": \"string\"\n        }\n      ],\n      \"totals\": {\n        \"subtotal\": 2615.368805626378,\n        \"taxTotal\": 2143.375056128771,\n        \"shippingTotal\": 9898.68290489556,\n        \"discountTotal\": 1673.061351709323,\n        \"orderTotal\": 3453.7250645836148,\n        \"currency\": \"USD\"\n      },\n      \"fulfillments\": [\n        {\n          \"fulfillmentId\": \"string\",\n          \"type\": \"in_store_pickup\",\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"status\": \"string\",\n          \"trackingNumber\": \"string\",\n          \"carrier\": \"string\",\n          \"estimatedDeliveryDate\": \"1971-10-13\",\n          \"shippedAt\": \"1986-03-23T14:21:42.307Z\"\n        },\n        {\n          \"fulfillmentId\": \"string\",\n          \"type\": \"ship_from_store\",\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"status\": \"string\",\n          \"trackingNumber\": \"string\",\n          \"carrier\": \"string\",\n          \"estimatedDeliveryDate\": \"1985-01-15\",\n          \"shippedAt\": \"1951-09-03T13:23:35.780Z\"\n        }\n      ],\n      \"createdAt\": \"2016-09-13T08:26:31.324Z\",\n      \"updatedAt\": \"1993-05-10T10:40:13.912Z\"\n    },\n    {\n      \"orderId\": \"string\",\n      \"externalOrderId\": \"string\",\n      \"status\": \"released\",\n      \"channelId\": \"string\",\n      \"customerId\": \"string\",\n      \"orderDate\": \"1964-10-16T09:26:29.880Z\",\n      \"requiredDeliveryDate\": \"1987-04-29\",\n      \"shippingAddress\": {\n        \"street1\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"street2\": \"string\",\n        \"phone\": \"string\"\n      },\n      \"lines\": [\n        {\n          \"lineId\": \"string\",\n          \"externalLineId\": \"string\",\n          \"itemId\": \"string\",\n          \"sku\": \"string\",\n          \"description\": \"string\",\n          \"quantity\": 4307.213319987205,\n          \"unitPrice\": 2148.156349425795,\n          \"status\": \"cancelled\",\n          \"fulfillmentNodeId\": \"string\"\n        },\n        {\n          \"lineId\": \"string\",\n          \"externalLineId\": \"string\",\n          \"itemId\": \"string\",\n          \"sku\": \"string\",\n          \"description\": \"string\",\n          \"quantity\": 1062.2933281517244,\n          \"unitPrice\": 8208.660413255871,\n          \"status\": \"cancelled\",\n          \"fulfillmentNodeId\": \"string\"\n        }\n      ],\n      \"totals\": {\n        \"subtotal\": 6303.998287213501,\n        \"taxTotal\": 2168.439981013901,\n        \"shippingTotal\": 7664.452602782137,\n        \"discountTotal\": 6699.3021273704135,\n        \"orderTotal\": 8575.281087495563,\n        \"currency\": \"USD\"\n      },\n      \"fulfillments\": [\n        {\n          \"fulfillmentId\": \"string\",\n          \"type\": \"in_store_pickup\",\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"status\": \"string\",\n          \"trackingNumber\": \"string\",\n          \"carrier\": \"string\",\n          \"estimatedDeliveryDate\": \"1986-07-09\",\n          \"shippedAt\": \"1970-08-26T08:00:09.725Z\"\n        },\n        {\n          \"fulfillmentId\": \"string\",\n          \"type\": \"curbside_pickup\",\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"status\": \"string\",\n          \"trackingNumber\": \"string\",\n          \"carrier\": \"string\",\n          \"estimatedDeliveryDate\": \"2008-07-31\",\n          \"shippedAt\": \"2004-06-06T05:15:13.864Z\"\n        }\n      ],\n      \"createdAt\": \"2016-12-11T22:01:56.109Z\",\n      \"updatedAt\": \"1989-09-05T10:04:03.446Z\"\n    }\n  ],\n  \"totalCount\": 4081,\n  \"limit\": 6425,\n  \"offset\": 7120\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "beeea5fe-71d8-48d5-9354-72303598fe36",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "channelId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderDateFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "orderDateTo",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40f41b53-0b3d-460a-b80d-5b8639c4a119",
+          "name": "Create an order",
+          "request": {
+            "name": "Create an order",
+            "description": {
+              "content": "Submit a new customer order for orchestration. The system performs inventory availability checking and assigns fulfillment nodes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channelId\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"shippingAddress\": {\n    \"street1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"externalLineId\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"unitPrice\": \"<number>\"\n    }\n  ],\n  \"externalOrderId\": \"<string>\",\n  \"orderDate\": \"<dateTime>\",\n  \"requiredDeliveryDate\": \"<date>\",\n  \"shippingMethod\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "281e74cd-2b5c-422c-b9f2-20f457ebc2cd",
+              "name": "Order created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelId\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"shippingAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"itemId\": \"string\",\n      \"quantity\": 8068.08293956332,\n      \"externalLineId\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 7264.061363292942\n    }\n  ],\n  \"externalOrderId\": \"<string>\",\n  \"orderDate\": \"<dateTime>\",\n  \"requiredDeliveryDate\": \"<date>\",\n  \"shippingMethod\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\",\n  \"externalOrderId\": \"string\",\n  \"status\": \"allocated\",\n  \"channelId\": \"string\",\n  \"customerId\": \"string\",\n  \"orderDate\": \"1951-08-31T19:24:07.009Z\",\n  \"requiredDeliveryDate\": \"1989-08-19\",\n  \"shippingAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"externalLineId\": \"string\",\n      \"itemId\": \"string\",\n      \"sku\": \"string\",\n      \"description\": \"string\",\n      \"quantity\": 5635.402934873798,\n      \"unitPrice\": 7627.2682591679895,\n      \"status\": \"delivered\",\n      \"fulfillmentNodeId\": \"string\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"externalLineId\": \"string\",\n      \"itemId\": \"string\",\n      \"sku\": \"string\",\n      \"description\": \"string\",\n      \"quantity\": 9820.594060587158,\n      \"unitPrice\": 5348.352741696071,\n      \"status\": \"open\",\n      \"fulfillmentNodeId\": \"string\"\n    }\n  ],\n  \"totals\": {\n    \"subtotal\": 1341.7709409168876,\n    \"taxTotal\": 5937.151268488738,\n    \"shippingTotal\": 8345.4672492339,\n    \"discountTotal\": 3607.6049170861957,\n    \"orderTotal\": 1648.8926023370254,\n    \"currency\": \"USD\"\n  },\n  \"fulfillments\": [\n    {\n      \"fulfillmentId\": \"string\",\n      \"type\": \"ship_from_dc\",\n      \"nodeId\": \"string\",\n      \"nodeName\": \"string\",\n      \"status\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"carrier\": \"string\",\n      \"estimatedDeliveryDate\": \"1974-06-23\",\n      \"shippedAt\": \"1979-08-26T19:17:57.264Z\"\n    },\n    {\n      \"fulfillmentId\": \"string\",\n      \"type\": \"ship_from_store\",\n      \"nodeId\": \"string\",\n      \"nodeName\": \"string\",\n      \"status\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"carrier\": \"string\",\n      \"estimatedDeliveryDate\": \"1983-01-02\",\n      \"shippedAt\": \"2009-06-21T16:53:40.770Z\"\n    }\n  ],\n  \"createdAt\": \"1966-08-08T08:09:33.900Z\",\n  \"updatedAt\": \"1949-07-22T05:45:32.331Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8cbc2f04-4a34-4bad-bb80-fd00c7f81dc8",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelId\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"shippingAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"itemId\": \"string\",\n      \"quantity\": 8068.08293956332,\n      \"externalLineId\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 7264.061363292942\n    }\n  ],\n  \"externalOrderId\": \"<string>\",\n  \"orderDate\": \"<dateTime>\",\n  \"requiredDeliveryDate\": \"<date>\",\n  \"shippingMethod\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "695c0584-12d4-4395-9c42-aaf68656efd2",
+              "name": "Order validation failed (inventory, address, etc.)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelId\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"shippingAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"itemId\": \"string\",\n      \"quantity\": 8068.08293956332,\n      \"externalLineId\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 7264.061363292942\n    }\n  ],\n  \"externalOrderId\": \"<string>\",\n  \"orderDate\": \"<dateTime>\",\n  \"requiredDeliveryDate\": \"<date>\",\n  \"shippingMethod\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6364aabb-424f-4663-b680-a1aae2eba25c",
+          "name": "Get an order",
+          "request": {
+            "name": "Get an order",
+            "description": {
+              "content": "Retrieve full details of an order including line items, fulfillment assignments, and shipments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a24b7eaa-393d-4fff-afad-ca5efb2c9b03",
+              "name": "Order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\",\n  \"externalOrderId\": \"string\",\n  \"status\": \"allocated\",\n  \"channelId\": \"string\",\n  \"customerId\": \"string\",\n  \"orderDate\": \"1951-08-31T19:24:07.009Z\",\n  \"requiredDeliveryDate\": \"1989-08-19\",\n  \"shippingAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"externalLineId\": \"string\",\n      \"itemId\": \"string\",\n      \"sku\": \"string\",\n      \"description\": \"string\",\n      \"quantity\": 5635.402934873798,\n      \"unitPrice\": 7627.2682591679895,\n      \"status\": \"delivered\",\n      \"fulfillmentNodeId\": \"string\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"externalLineId\": \"string\",\n      \"itemId\": \"string\",\n      \"sku\": \"string\",\n      \"description\": \"string\",\n      \"quantity\": 9820.594060587158,\n      \"unitPrice\": 5348.352741696071,\n      \"status\": \"open\",\n      \"fulfillmentNodeId\": \"string\"\n    }\n  ],\n  \"totals\": {\n    \"subtotal\": 1341.7709409168876,\n    \"taxTotal\": 5937.151268488738,\n    \"shippingTotal\": 8345.4672492339,\n    \"discountTotal\": 3607.6049170861957,\n    \"orderTotal\": 1648.8926023370254,\n    \"currency\": \"USD\"\n  },\n  \"fulfillments\": [\n    {\n      \"fulfillmentId\": \"string\",\n      \"type\": \"ship_from_dc\",\n      \"nodeId\": \"string\",\n      \"nodeName\": \"string\",\n      \"status\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"carrier\": \"string\",\n      \"estimatedDeliveryDate\": \"1974-06-23\",\n      \"shippedAt\": \"1979-08-26T19:17:57.264Z\"\n    },\n    {\n      \"fulfillmentId\": \"string\",\n      \"type\": \"ship_from_store\",\n      \"nodeId\": \"string\",\n      \"nodeName\": \"string\",\n      \"status\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"carrier\": \"string\",\n      \"estimatedDeliveryDate\": \"1983-01-02\",\n      \"shippedAt\": \"2009-06-21T16:53:40.770Z\"\n    }\n  ],\n  \"createdAt\": \"1966-08-08T08:09:33.900Z\",\n  \"updatedAt\": \"1949-07-22T05:45:32.331Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebb53c5f-634a-431f-ad9e-b4dc5ccd25cb",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4462d34b-5c42-4225-97d9-99b0bb4e9d1f",
+          "name": "Update an order",
+          "request": {
+            "name": "Update an order",
+            "description": {
+              "content": "Modify an open order (add/remove lines, change quantities, update addresses).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingAddress\": {\n    \"street1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"requiredDeliveryDate\": \"<date>\",\n  \"addLines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"externalLineId\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"unitPrice\": \"<number>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"externalLineId\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"unitPrice\": \"<number>\"\n    }\n  ],\n  \"removeLineIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b840dfd-30ba-46c8-b907-df1928136647",
+              "name": "Order updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shippingAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"requiredDeliveryDate\": \"<date>\",\n  \"addLines\": [\n    {\n      \"itemId\": \"string\",\n      \"quantity\": 6878.386094933019,\n      \"externalLineId\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 5312.06859564492\n    },\n    {\n      \"itemId\": \"string\",\n      \"quantity\": 2126.901037503797,\n      \"externalLineId\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 5461.960379987828\n    }\n  ],\n  \"removeLineIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\",\n  \"externalOrderId\": \"string\",\n  \"status\": \"allocated\",\n  \"channelId\": \"string\",\n  \"customerId\": \"string\",\n  \"orderDate\": \"1951-08-31T19:24:07.009Z\",\n  \"requiredDeliveryDate\": \"1989-08-19\",\n  \"shippingAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"externalLineId\": \"string\",\n      \"itemId\": \"string\",\n      \"sku\": \"string\",\n      \"description\": \"string\",\n      \"quantity\": 5635.402934873798,\n      \"unitPrice\": 7627.2682591679895,\n      \"status\": \"delivered\",\n      \"fulfillmentNodeId\": \"string\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"externalLineId\": \"string\",\n      \"itemId\": \"string\",\n      \"sku\": \"string\",\n      \"description\": \"string\",\n      \"quantity\": 9820.594060587158,\n      \"unitPrice\": 5348.352741696071,\n      \"status\": \"open\",\n      \"fulfillmentNodeId\": \"string\"\n    }\n  ],\n  \"totals\": {\n    \"subtotal\": 1341.7709409168876,\n    \"taxTotal\": 5937.151268488738,\n    \"shippingTotal\": 8345.4672492339,\n    \"discountTotal\": 3607.6049170861957,\n    \"orderTotal\": 1648.8926023370254,\n    \"currency\": \"USD\"\n  },\n  \"fulfillments\": [\n    {\n      \"fulfillmentId\": \"string\",\n      \"type\": \"ship_from_dc\",\n      \"nodeId\": \"string\",\n      \"nodeName\": \"string\",\n      \"status\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"carrier\": \"string\",\n      \"estimatedDeliveryDate\": \"1974-06-23\",\n      \"shippedAt\": \"1979-08-26T19:17:57.264Z\"\n    },\n    {\n      \"fulfillmentId\": \"string\",\n      \"type\": \"ship_from_store\",\n      \"nodeId\": \"string\",\n      \"nodeName\": \"string\",\n      \"status\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"carrier\": \"string\",\n      \"estimatedDeliveryDate\": \"1983-01-02\",\n      \"shippedAt\": \"2009-06-21T16:53:40.770Z\"\n    }\n  ],\n  \"createdAt\": \"1966-08-08T08:09:33.900Z\",\n  \"updatedAt\": \"1949-07-22T05:45:32.331Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d0ee2c2-266c-4a0c-b141-8134ee553ed8",
+          "name": "Cancel an order",
+          "request": {
+            "name": "Cancel an order",
+            "description": {
+              "content": "Cancel an order or specific order lines.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\",\n  \"lineIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d1f8e4e-bc84-4fcd-b9ad-a2a4fcf2397f",
+              "name": "Cancellation processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"lineIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\",\n  \"externalOrderId\": \"string\",\n  \"status\": \"allocated\",\n  \"channelId\": \"string\",\n  \"customerId\": \"string\",\n  \"orderDate\": \"1951-08-31T19:24:07.009Z\",\n  \"requiredDeliveryDate\": \"1989-08-19\",\n  \"shippingAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"externalLineId\": \"string\",\n      \"itemId\": \"string\",\n      \"sku\": \"string\",\n      \"description\": \"string\",\n      \"quantity\": 5635.402934873798,\n      \"unitPrice\": 7627.2682591679895,\n      \"status\": \"delivered\",\n      \"fulfillmentNodeId\": \"string\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"externalLineId\": \"string\",\n      \"itemId\": \"string\",\n      \"sku\": \"string\",\n      \"description\": \"string\",\n      \"quantity\": 9820.594060587158,\n      \"unitPrice\": 5348.352741696071,\n      \"status\": \"open\",\n      \"fulfillmentNodeId\": \"string\"\n    }\n  ],\n  \"totals\": {\n    \"subtotal\": 1341.7709409168876,\n    \"taxTotal\": 5937.151268488738,\n    \"shippingTotal\": 8345.4672492339,\n    \"discountTotal\": 3607.6049170861957,\n    \"orderTotal\": 1648.8926023370254,\n    \"currency\": \"USD\"\n  },\n  \"fulfillments\": [\n    {\n      \"fulfillmentId\": \"string\",\n      \"type\": \"ship_from_dc\",\n      \"nodeId\": \"string\",\n      \"nodeName\": \"string\",\n      \"status\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"carrier\": \"string\",\n      \"estimatedDeliveryDate\": \"1974-06-23\",\n      \"shippedAt\": \"1979-08-26T19:17:57.264Z\"\n    },\n    {\n      \"fulfillmentId\": \"string\",\n      \"type\": \"ship_from_store\",\n      \"nodeId\": \"string\",\n      \"nodeName\": \"string\",\n      \"status\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"carrier\": \"string\",\n      \"estimatedDeliveryDate\": \"1983-01-02\",\n      \"shippedAt\": \"2009-06-21T16:53:40.770Z\"\n    }\n  ],\n  \"createdAt\": \"1966-08-08T08:09:33.900Z\",\n  \"updatedAt\": \"1949-07-22T05:45:32.331Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7c828d82-fefa-436f-9a9e-a77992194a15",
+      "name": "Promising",
+      "description": {
+        "content": "Order promising and delivery date estimation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9d64fad-d1c5-464d-98ac-c594874be0fd",
+          "name": "Check order promise (ATP)",
+          "request": {
+            "name": "Check order promise (ATP)",
+            "description": {
+              "content": "Run order promising logic to determine earliest delivery dates, best fulfillment nodes, and shipping options without committing inventory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "promise",
+                "check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"deliveryAddress\": {\n    \"street1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"channelId\": \"<string>\",\n  \"requestedDeliveryDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c05738e-0882-4589-b76c-0b9268fe6c45",
+              "name": "Promise options",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promise",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"deliveryAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"channelId\": \"<string>\",\n  \"requestedDeliveryDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"options\": [\n    {\n      \"fulfillmentType\": \"string\",\n      \"nodeId\": \"string\",\n      \"estimatedDeliveryDate\": \"2001-07-05\",\n      \"shippingMethod\": \"string\",\n      \"shippingCost\": 6222.360421234359,\n      \"lines\": [\n        {\n          \"itemId\": \"string\",\n          \"promisedQuantity\": 1910.2746751042532\n        },\n        {\n          \"itemId\": \"string\",\n          \"promisedQuantity\": 6691.38727074941\n        }\n      ]\n    },\n    {\n      \"fulfillmentType\": \"string\",\n      \"nodeId\": \"string\",\n      \"estimatedDeliveryDate\": \"1966-04-22\",\n      \"shippingMethod\": \"string\",\n      \"shippingCost\": 9503.49133094891,\n      \"lines\": [\n        {\n          \"itemId\": \"string\",\n          \"promisedQuantity\": 4152.778022969396\n        },\n        {\n          \"itemId\": \"string\",\n          \"promisedQuantity\": 456.2844236258501\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "de0181dc-1d40-4fb8-af05-270ab270d008",
+      "name": "Returns",
+      "description": {
+        "content": "Return and exchange processing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3279fb3e-d60a-4177-94d3-2fae5dcdd864",
+          "name": "Create a return",
+          "request": {
+            "name": "Create a return",
+            "description": {
+              "content": "Initiate a customer return or exchange for a fulfilled order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "returns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"lines\": [\n    {\n      \"lineId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"lineId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ee9e6163-101c-4e5c-8b13-967db656b1f6",
+              "name": "Return created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "returns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"lines\": [\n    {\n      \"lineId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"lineId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"returnId\": \"string\",\n  \"orderId\": \"string\",\n  \"status\": \"created\",\n  \"reason\": \"string\",\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"quantity\": 3411.6879302482894,\n      \"refundAmount\": 4590.582981649695\n    },\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"quantity\": 1526.1101228385842,\n      \"refundAmount\": 6708.254910884618\n    }\n  ],\n  \"createdAt\": \"1994-08-10T12:29:32.085Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.developer.manh.com/omni/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "orders:read orders:write inventory:read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.developer.manh.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "94863c60-0994-459e-b960-d33cf3c26fbb",
+    "name": "Manhattan Active Omni Order Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.\n\nContact Support:\n Name: Manhattan Associates Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

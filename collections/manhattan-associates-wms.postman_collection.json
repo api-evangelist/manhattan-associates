@@ -1,0 +1,998 @@
+{
+  "item": [
+    {
+      "id": "76909161-7101-470f-bc75-70a0e51a4fa0",
+      "name": "Inbound",
+      "description": {
+        "content": "ASN and receipt management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cc1677f9-229e-4a7e-a28a-9dc2d9735842",
+          "name": "List inbound receipts",
+          "request": {
+            "name": "List inbound receipts",
+            "description": {
+              "content": "Retrieve inbound receipt records for advance shipment notices and received inventory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "receipts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8cd11ea9-d705-4ead-994e-8ed72e258a86",
+              "name": "List of receipts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "receipts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"receipts\": [\n    {\n      \"receiptId\": \"string\",\n      \"externalASNId\": \"string\",\n      \"facilityId\": \"string\",\n      \"supplierId\": \"string\",\n      \"status\": \"in_progress\",\n      \"expectedArrivalDate\": \"1984-11-10\",\n      \"lines\": [\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"expectedQuantity\": 5716.74838743687,\n          \"receivedQuantity\": 8694.178519438754,\n          \"uom\": \"string\",\n          \"lotNumber\": \"string\",\n          \"expirationDate\": \"1950-02-04\"\n        },\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"expectedQuantity\": 4491.713666830188,\n          \"receivedQuantity\": 7126.688339025786,\n          \"uom\": \"string\",\n          \"lotNumber\": \"string\",\n          \"expirationDate\": \"1970-12-09\"\n        }\n      ],\n      \"createdAt\": \"2014-10-15T04:02:45.993Z\"\n    },\n    {\n      \"receiptId\": \"string\",\n      \"externalASNId\": \"string\",\n      \"facilityId\": \"string\",\n      \"supplierId\": \"string\",\n      \"status\": \"completed\",\n      \"expectedArrivalDate\": \"1991-12-06\",\n      \"lines\": [\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"expectedQuantity\": 6819.618044552492,\n          \"receivedQuantity\": 2220.2416419922642,\n          \"uom\": \"string\",\n          \"lotNumber\": \"string\",\n          \"expirationDate\": \"1959-01-18\"\n        },\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"expectedQuantity\": 4730.623469432721,\n          \"receivedQuantity\": 8728.212833145322,\n          \"uom\": \"string\",\n          \"lotNumber\": \"string\",\n          \"expirationDate\": \"1970-04-17\"\n        }\n      ],\n      \"createdAt\": \"2007-09-17T01:56:44.814Z\"\n    }\n  ],\n  \"totalCount\": 3210\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba7fbed3-a529-4bc6-9854-760030e37b24",
+          "name": "Create an advance shipment notice (ASN)",
+          "request": {
+            "name": "Create an advance shipment notice (ASN)",
+            "description": {
+              "content": "Create an ASN to pre-notify the warehouse of an inbound shipment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "receipts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"facilityId\": \"<string>\",\n  \"supplierId\": \"<string>\",\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"expectedQuantity\": \"<number>\",\n      \"uom\": \"<string>\",\n      \"lotNumber\": \"<string>\"\n    }\n  ],\n  \"externalASNId\": \"<string>\",\n  \"expectedArrivalDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e75fdb1a-0f59-4f17-acb4-b3e5ade86b37",
+              "name": "ASN created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "receipts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"facilityId\": \"<string>\",\n  \"supplierId\": \"<string>\",\n  \"lines\": [\n    {\n      \"itemId\": \"string\",\n      \"expectedQuantity\": 7686.259547759726,\n      \"uom\": \"string\",\n      \"lotNumber\": \"string\"\n    }\n  ],\n  \"externalASNId\": \"<string>\",\n  \"expectedArrivalDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"receiptId\": \"string\",\n  \"externalASNId\": \"string\",\n  \"facilityId\": \"string\",\n  \"supplierId\": \"string\",\n  \"status\": \"in_progress\",\n  \"expectedArrivalDate\": \"1975-02-02\",\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"expectedQuantity\": 4156.248373913587,\n      \"receivedQuantity\": 3937.630276218329,\n      \"uom\": \"string\",\n      \"lotNumber\": \"string\",\n      \"expirationDate\": \"1953-03-24\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"expectedQuantity\": 7676.316151203218,\n      \"receivedQuantity\": 1085.3440449488305,\n      \"uom\": \"string\",\n      \"lotNumber\": \"string\",\n      \"expirationDate\": \"2002-01-12\"\n    }\n  ],\n  \"createdAt\": \"2024-12-11T01:55:03.223Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6783f313-4668-4031-a570-b01c56d5e4e6",
+          "name": "Get receipt details",
+          "request": {
+            "name": "Get receipt details",
+            "description": {
+              "content": "Retrieve full details of an inbound receipt.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "receipts",
+                ":receiptId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "receiptId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "046a5983-b4a5-4c89-9b0c-b4d2ee6bf269",
+              "name": "Receipt details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "receipts",
+                    ":receiptId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "receiptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"receiptId\": \"string\",\n  \"externalASNId\": \"string\",\n  \"facilityId\": \"string\",\n  \"supplierId\": \"string\",\n  \"status\": \"in_progress\",\n  \"expectedArrivalDate\": \"1975-02-02\",\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"expectedQuantity\": 4156.248373913587,\n      \"receivedQuantity\": 3937.630276218329,\n      \"uom\": \"string\",\n      \"lotNumber\": \"string\",\n      \"expirationDate\": \"1953-03-24\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"expectedQuantity\": 7676.316151203218,\n      \"receivedQuantity\": 1085.3440449488305,\n      \"uom\": \"string\",\n      \"lotNumber\": \"string\",\n      \"expirationDate\": \"2002-01-12\"\n    }\n  ],\n  \"createdAt\": \"2024-12-11T01:55:03.223Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfd7ea14-311a-4f1c-ab93-4aa6bff441df",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "receipts",
+                    ":receiptId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "receiptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "52decffb-712e-4975-b574-d2bc0a1c283d",
+      "name": "Inventory",
+      "description": {
+        "content": "Warehouse inventory positions and transfers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "29f81e92-2f65-4649-beff-f5c8c1d9639a",
+          "name": "Query warehouse inventory",
+          "request": {
+            "name": "Query warehouse inventory",
+            "description": {
+              "content": "Query real-time inventory positions within the warehouse by item, location, and lot.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "itemId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "locationId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lotNumber",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36533484-209f-47d2-810b-9842bff20606",
+              "name": "Inventory records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "facilityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "itemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lotNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"records\": [\n    {\n      \"itemId\": \"string\",\n      \"facilityId\": \"string\",\n      \"locationId\": \"string\",\n      \"locationName\": \"string\",\n      \"lotNumber\": \"string\",\n      \"onHandQuantity\": 3997.8479722320526,\n      \"allocatedQuantity\": 2873.302098254453,\n      \"availableQuantity\": 5901.672213985597,\n      \"uom\": \"string\",\n      \"expirationDate\": \"2018-02-15\",\n      \"updatedAt\": \"1965-08-26T04:59:57.456Z\"\n    },\n    {\n      \"itemId\": \"string\",\n      \"facilityId\": \"string\",\n      \"locationId\": \"string\",\n      \"locationName\": \"string\",\n      \"lotNumber\": \"string\",\n      \"onHandQuantity\": 6195.257431822813,\n      \"allocatedQuantity\": 752.1529268978788,\n      \"availableQuantity\": 7325.097479683892,\n      \"uom\": \"string\",\n      \"expirationDate\": \"1981-11-09\",\n      \"updatedAt\": \"2018-12-11T06:45:04.197Z\"\n    }\n  ],\n  \"totalCount\": 1920\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23244ecd-fe46-49b3-8d71-6c3f0d4ce590",
+          "name": "Create an inventory transfer",
+          "request": {
+            "name": "Create an inventory transfer",
+            "description": {
+              "content": "Transfer inventory between locations, facilities, or zones within the warehouse.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"facilityId\": \"<string>\",\n  \"fromLocationId\": \"<string>\",\n  \"toLocationId\": \"<string>\",\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"lotNumber\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ca935471-c54c-4ac0-a6f7-d00d1bb0695f",
+              "name": "Transfer created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"facilityId\": \"<string>\",\n  \"fromLocationId\": \"<string>\",\n  \"toLocationId\": \"<string>\",\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"lotNumber\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transferId\": \"string\",\n  \"fromLocationId\": \"string\",\n  \"toLocationId\": \"string\",\n  \"facilityId\": \"string\",\n  \"lines\": [\n    {\n      \"itemId\": \"string\",\n      \"quantity\": 4204.057702821477,\n      \"lotNumber\": \"string\"\n    },\n    {\n      \"itemId\": \"string\",\n      \"quantity\": 6486.142629578526,\n      \"lotNumber\": \"string\"\n    }\n  ],\n  \"status\": \"pending\",\n  \"createdAt\": \"1981-04-11T22:24:17.201Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1f7cd963-a09c-4924-aab6-4055db27a14e",
+      "name": "Outbound",
+      "description": {
+        "content": "Outbound order fulfillment and shipment",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a22c920-ad8a-44a9-8268-9bb1acf5e9f5",
+          "name": "List outbound orders",
+          "request": {
+            "name": "List outbound orders",
+            "description": {
+              "content": "Retrieve warehouse outbound orders for picking, packing, and shipping.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outbound",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "waveId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f2a17c4-3e3b-438b-b5fe-f9aea591e013",
+              "name": "List of outbound orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outbound",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "waveId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orders\": [\n    {\n      \"orderId\": \"string\",\n      \"externalOrderId\": \"string\",\n      \"facilityId\": \"string\",\n      \"status\": \"packing\",\n      \"shipToAddress\": {\n        \"name\": \"string\",\n        \"street1\": \"string\",\n        \"street2\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": \"string\",\n        \"phone\": \"string\"\n      },\n      \"lines\": [\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"orderedQuantity\": 3230.6662270601905,\n          \"pickedQuantity\": 2484.0652051004795,\n          \"shippedQuantity\": 8460.13069708544,\n          \"uom\": \"string\",\n          \"status\": \"string\"\n        },\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"orderedQuantity\": 7240.523205950725,\n          \"pickedQuantity\": 3039.325637426569,\n          \"shippedQuantity\": 8945.549173197964,\n          \"uom\": \"string\",\n          \"status\": \"string\"\n        }\n      ],\n      \"waveId\": \"string\",\n      \"carrier\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"shippedAt\": \"1979-01-21T06:26:00.462Z\"\n    },\n    {\n      \"orderId\": \"string\",\n      \"externalOrderId\": \"string\",\n      \"facilityId\": \"string\",\n      \"status\": \"packing\",\n      \"shipToAddress\": {\n        \"name\": \"string\",\n        \"street1\": \"string\",\n        \"street2\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": \"string\",\n        \"phone\": \"string\"\n      },\n      \"lines\": [\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"orderedQuantity\": 8923.880702561744,\n          \"pickedQuantity\": 5451.442355467,\n          \"shippedQuantity\": 8032.293715791857,\n          \"uom\": \"string\",\n          \"status\": \"string\"\n        },\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"orderedQuantity\": 5890.789403025836,\n          \"pickedQuantity\": 7238.785843372798,\n          \"shippedQuantity\": 6859.154141508487,\n          \"uom\": \"string\",\n          \"status\": \"string\"\n        }\n      ],\n      \"waveId\": \"string\",\n      \"carrier\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"shippedAt\": \"1960-03-12T12:38:44.036Z\"\n    }\n  ],\n  \"totalCount\": 1546\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7390d69-7904-4a14-a225-ae2c1072e70c",
+          "name": "Create an outbound order",
+          "request": {
+            "name": "Create an outbound order",
+            "description": {
+              "content": "Submit a new outbound order for warehouse fulfillment execution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outbound",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"facilityId\": \"<string>\",\n  \"shipToAddress\": {\n    \"name\": \"<string>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"uom\": \"<string>\"\n    }\n  ],\n  \"externalOrderId\": \"<string>\",\n  \"requestedShipDate\": \"<date>\",\n  \"carrier\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "115c774e-e236-45e3-b66d-4a43d788a5d1",
+              "name": "Outbound order created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outbound",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"facilityId\": \"<string>\",\n  \"shipToAddress\": {\n    \"name\": \"string\",\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"uom\": \"<string>\"\n    }\n  ],\n  \"externalOrderId\": \"<string>\",\n  \"requestedShipDate\": \"<date>\",\n  \"carrier\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\",\n  \"externalOrderId\": \"string\",\n  \"facilityId\": \"string\",\n  \"status\": \"ready_to_ship\",\n  \"shipToAddress\": {\n    \"name\": \"string\",\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"orderedQuantity\": 7361.473038712686,\n      \"pickedQuantity\": 5074.264285302756,\n      \"shippedQuantity\": 2332.0858128316936,\n      \"uom\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"orderedQuantity\": 8414.614148994206,\n      \"pickedQuantity\": 1361.999140527086,\n      \"shippedQuantity\": 8250.893318328419,\n      \"uom\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"waveId\": \"string\",\n  \"carrier\": \"string\",\n  \"trackingNumber\": \"string\",\n  \"shippedAt\": \"1979-02-07T18:38:37.877Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad851bf9-fd15-418d-a51a-1b69abafe2fd",
+          "name": "Confirm shipment of an outbound order",
+          "request": {
+            "name": "Confirm shipment of an outbound order",
+            "description": {
+              "content": "Record the shipment of a packed outbound order, capturing carrier and tracking information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outbound",
+                "orders",
+                ":orderId",
+                "ship"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"carrier\": \"<string>\",\n  \"trackingNumber\": \"<string>\",\n  \"shippedAt\": \"<dateTime>\",\n  \"weight\": \"<number>\",\n  \"weightUom\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f218654-f6f4-42cf-bd3e-0f2633a692b4",
+              "name": "Shipment confirmed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outbound",
+                    "orders",
+                    ":orderId",
+                    "ship"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"carrier\": \"<string>\",\n  \"trackingNumber\": \"<string>\",\n  \"shippedAt\": \"<dateTime>\",\n  \"weight\": \"<number>\",\n  \"weightUom\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\",\n  \"externalOrderId\": \"string\",\n  \"facilityId\": \"string\",\n  \"status\": \"ready_to_ship\",\n  \"shipToAddress\": {\n    \"name\": \"string\",\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"orderedQuantity\": 7361.473038712686,\n      \"pickedQuantity\": 5074.264285302756,\n      \"shippedQuantity\": 2332.0858128316936,\n      \"uom\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"orderedQuantity\": 8414.614148994206,\n      \"pickedQuantity\": 1361.999140527086,\n      \"shippedQuantity\": 8250.893318328419,\n      \"uom\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"waveId\": \"string\",\n  \"carrier\": \"string\",\n  \"trackingNumber\": \"string\",\n  \"shippedAt\": \"1979-02-07T18:38:37.877Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.developer.manh.com/wms/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "wms:read wms:write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.developer.manh.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1e3e9225-c713-4e01-b986-299d976fe9b1",
+    "name": "Manhattan Active Supply Chain (WMS) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manhattan Active Supply Chain APIs provide warehouse management (WMS) capabilities including inventory tracking, order processing, labor management, yard management, and shipment execution for distribution center operations.\n\nContact Support:\n Name: Manhattan Associates Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
