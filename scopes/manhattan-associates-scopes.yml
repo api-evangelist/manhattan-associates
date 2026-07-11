@@ -1,0 +1,45 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/manhattan-associates-omni-openapi.yml, openapi/manhattan-associates-wms-openapi.yml
+schemes:
+- name: OAuth2ClientCredentials
+  source: openapi/manhattan-associates-omni-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.developer.manh.com/oauth2/token
+- name: OAuth2ClientCredentials
+  source: openapi/manhattan-associates-wms-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.developer.manh.com/oauth2/token
+scopes:
+- scope: inventory:read
+  description: Read inventory positions
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/manhattan-associates-omni-openapi.yml
+- scope: orders:read
+  description: Read order data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/manhattan-associates-omni-openapi.yml
+- scope: orders:write
+  description: Create and modify orders
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/manhattan-associates-omni-openapi.yml
+- scope: wms:read
+  description: Read warehouse data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/manhattan-associates-wms-openapi.yml
+- scope: wms:write
+  description: Write warehouse operations
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/manhattan-associates-wms-openapi.yml
