@@ -100,6 +100,10 @@ apis:
       execution. APIs enable order management, inventory tracking, shipment planning, labor management, and yard
       management for distribution and logistics operations.
 common:
+  - type: DomainSecurity
+    url: security/manhattan-associates-domain-security.yml
+  - type: Authentication
+    url: authentication/manhattan-associates-authentication.yml
   - type: OAuthScopes
     url: scopes/manhattan-associates-scopes.yml
   - type: LinkedIn

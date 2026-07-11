@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/manhattan-associates-omni-openapi.yml, openapi/manhattan-associates-wms-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: OAuth2ClientCredentials
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.developer.manh.com/oauth2/token
+    scopes: 3
+  sources:
+  - openapi/manhattan-associates-omni-openapi.yml
+  - openapi/manhattan-associates-wms-openapi.yml
