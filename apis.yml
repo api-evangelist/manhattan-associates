@@ -100,6 +100,8 @@ apis:
       execution. APIs enable order management, inventory tracking, shipment planning, labor management, and yard
       management for distribution and logistics operations.
 common:
+  - type: AgenticAccess
+    url: agentic-access/manhattan-associates-agentic-access.yml
   - type: DomainSecurity
     url: security/manhattan-associates-domain-security.yml
   - type: Authentication
