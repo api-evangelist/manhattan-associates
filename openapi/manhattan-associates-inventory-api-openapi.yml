@@ -1,0 +1,342 @@
+openapi: 3.1.0
+info:
+  title: Manhattan Active Omni Order Management Inbound Inventory API
+  description: Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.
+  version: 1.0.0
+  contact:
+    name: Manhattan Associates Developer Support
+    url: https://developer.manh.com/
+  license:
+    name: Proprietary
+    url: https://www.manh.com/terms-of-use
+servers:
+- url: https://api.developer.manh.com/omni/v1
+  description: Manhattan Active Omni REST API
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Inventory
+  description: Real-time inventory positions and ATP
+paths:
+  /inventory/availability:
+    post:
+      operationId: checkInventoryAvailability
+      summary: Check inventory availability
+      description: Query real-time inventory availability for a list of items across fulfillment nodes, applying ATP (Available to Promise) rules.
+      tags:
+      - Inventory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AvailabilityRequest'
+      responses:
+        '200':
+          description: Availability results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityResponse'
+  /inventory/positions:
+    get:
+      operationId: getInventoryPositions
+      summary: Get inventory positions
+      description: Retrieve current inventory positions for items across fulfillment locations.
+      tags:
+      - Inventory
+      parameters:
+      - name: itemId
+        in: query
+        schema:
+          type: string
+      - name: locationId
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Inventory positions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryPositionListResponse'
+  /inventory:
+    get:
+      operationId: getWarehouseInventory
+      summary: Query warehouse inventory
+      description: Query real-time inventory positions within the warehouse by item, location, and lot.
+      tags:
+      - Inventory
+      parameters:
+      - name: facilityId
+        in: query
+        schema:
+          type: string
+      - name: itemId
+        in: query
+        schema:
+          type: string
+      - name: locationId
+        in: query
+        schema:
+          type: string
+      - name: lotNumber
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Inventory records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WarehouseInventoryResponse'
+  /transfers:
+    post:
+      operationId: createInventoryTransfer
+      summary: Create an inventory transfer
+      description: Transfer inventory between locations, facilities, or zones within the warehouse.
+      tags:
+      - Inventory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferRequest'
+      responses:
+        '201':
+          description: Transfer created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+components:
+  schemas:
+    AvailabilityRequest:
+      type: object
+      required:
+      - items
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            required:
+            - itemId
+            - quantity
+            properties:
+              itemId:
+                type: string
+              quantity:
+                type: number
+        deliveryAddress:
+          $ref: '#/components/schemas/Address'
+        channelId:
+          type: string
+    WarehouseInventoryRecord:
+      type: object
+      properties:
+        itemId:
+          type: string
+        facilityId:
+          type: string
+        locationId:
+          type: string
+        locationName:
+          type: string
+        lotNumber:
+          type: string
+        onHandQuantity:
+          type: number
+        allocatedQuantity:
+          type: number
+        availableQuantity:
+          type: number
+        uom:
+          type: string
+        expirationDate:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date-time
+    Transfer:
+      type: object
+      properties:
+        transferId:
+          type: string
+        fromLocationId:
+          type: string
+        toLocationId:
+          type: string
+        facilityId:
+          type: string
+        lines:
+          type: array
+          items:
+            type: object
+            properties:
+              itemId:
+                type: string
+              quantity:
+                type: number
+              lotNumber:
+                type: string
+        status:
+          type: string
+          enum:
+          - pending
+          - in_progress
+          - completed
+        createdAt:
+          type: string
+          format: date-time
+    Address:
+      type: object
+      required:
+      - street1
+      - city
+      - state
+      - postalCode
+      - country
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+        phone:
+          type: string
+    WarehouseInventoryResponse:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/WarehouseInventoryRecord'
+        totalCount:
+          type: integer
+    TransferRequest:
+      type: object
+      required:
+      - facilityId
+      - fromLocationId
+      - toLocationId
+      - lines
+      properties:
+        facilityId:
+          type: string
+        fromLocationId:
+          type: string
+        toLocationId:
+          type: string
+        lines:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+            - itemId
+            - quantity
+            properties:
+              itemId:
+                type: string
+              quantity:
+                type: number
+              lotNumber:
+                type: string
+    InventoryPositionListResponse:
+      type: object
+      properties:
+        positions:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryPosition'
+        totalCount:
+          type: integer
+    AvailabilityResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              itemId:
+                type: string
+              requestedQuantity:
+                type: number
+              availableQuantity:
+                type: number
+              available:
+                type: boolean
+              availabilityDate:
+                type: string
+                format: date
+              nodes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    nodeId:
+                      type: string
+                    nodeName:
+                      type: string
+                    availableQuantity:
+                      type: number
+    InventoryPosition:
+      type: object
+      properties:
+        itemId:
+          type: string
+        locationId:
+          type: string
+        locationName:
+          type: string
+        onHand:
+          type: number
+        reserved:
+          type: number
+        available:
+          type: number
+        onOrder:
+          type: number
+        updatedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.developer.manh.com/oauth2/token
+          scopes:
+            orders:read: Read order data
+            orders:write: Create and modify orders
+            inventory:read: Read inventory positions
+externalDocs:
+  description: Manhattan Active Omni Developer Portal
+  url: https://omni.developer.manh.com/

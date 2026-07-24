@@ -1,0 +1,245 @@
+openapi: 3.1.0
+info:
+  title: Manhattan Active Omni Order Management Inbound Outbound API
+  description: Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.
+  version: 1.0.0
+  contact:
+    name: Manhattan Associates Developer Support
+    url: https://developer.manh.com/
+  license:
+    name: Proprietary
+    url: https://www.manh.com/terms-of-use
+servers:
+- url: https://api.developer.manh.com/omni/v1
+  description: Manhattan Active Omni REST API
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Outbound
+  description: Outbound order fulfillment and shipment
+paths:
+  /outbound/orders:
+    get:
+      operationId: listOutboundOrders
+      summary: List outbound orders
+      description: Retrieve warehouse outbound orders for picking, packing, and shipping.
+      tags:
+      - Outbound
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - released
+          - picking
+          - packing
+          - ready_to_ship
+          - shipped
+      - name: waveId
+        in: query
+        schema:
+          type: string
+      - name: facilityId
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 50
+      responses:
+        '200':
+          description: List of outbound orders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutboundOrderListResponse'
+    post:
+      operationId: createOutboundOrder
+      summary: Create an outbound order
+      description: Submit a new outbound order for warehouse fulfillment execution.
+      tags:
+      - Outbound
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutboundOrderCreateRequest'
+      responses:
+        '201':
+          description: Outbound order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutboundOrder'
+  /outbound/orders/{orderId}/ship:
+    post:
+      operationId: shipOutboundOrder
+      summary: Confirm shipment of an outbound order
+      description: Record the shipment of a packed outbound order, capturing carrier and tracking information.
+      tags:
+      - Outbound
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentConfirmRequest'
+      responses:
+        '200':
+          description: Shipment confirmed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutboundOrder'
+components:
+  schemas:
+    OutboundLine:
+      type: object
+      properties:
+        lineId:
+          type: string
+        itemId:
+          type: string
+        orderedQuantity:
+          type: number
+        pickedQuantity:
+          type: number
+        shippedQuantity:
+          type: number
+        uom:
+          type: string
+        status:
+          type: string
+    OutboundOrder:
+      type: object
+      properties:
+        orderId:
+          type: string
+        externalOrderId:
+          type: string
+        facilityId:
+          type: string
+        status:
+          type: string
+          enum:
+          - released
+          - picking
+          - packing
+          - ready_to_ship
+          - shipped
+        shipToAddress:
+          $ref: '#/components/schemas/ShipAddress'
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutboundLine'
+        waveId:
+          type: string
+        carrier:
+          type: string
+        trackingNumber:
+          type: string
+        shippedAt:
+          type: string
+          format: date-time
+    ShipmentConfirmRequest:
+      type: object
+      required:
+      - carrier
+      - trackingNumber
+      properties:
+        carrier:
+          type: string
+        trackingNumber:
+          type: string
+        shippedAt:
+          type: string
+          format: date-time
+        weight:
+          type: number
+        weightUom:
+          type: string
+    OutboundOrderListResponse:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutboundOrder'
+        totalCount:
+          type: integer
+    ShipAddress:
+      type: object
+      properties:
+        name:
+          type: string
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+        phone:
+          type: string
+    OutboundOrderCreateRequest:
+      type: object
+      required:
+      - facilityId
+      - shipToAddress
+      - lines
+      properties:
+        externalOrderId:
+          type: string
+        facilityId:
+          type: string
+        shipToAddress:
+          $ref: '#/components/schemas/ShipAddress'
+        requestedShipDate:
+          type: string
+          format: date
+        carrier:
+          type: string
+        lines:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+            - itemId
+            - quantity
+            properties:
+              itemId:
+                type: string
+              quantity:
+                type: number
+              uom:
+                type: string
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.developer.manh.com/oauth2/token
+          scopes:
+            orders:read: Read order data
+            orders:write: Create and modify orders
+            inventory:read: Read inventory positions
+externalDocs:
+  description: Manhattan Active Omni Developer Portal
+  url: https://omni.developer.manh.com/

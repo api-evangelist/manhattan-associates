@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: Manhattan Active Omni Order Management Inbound Promising API
+  description: Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.
+  version: 1.0.0
+  contact:
+    name: Manhattan Associates Developer Support
+    url: https://developer.manh.com/
+  license:
+    name: Proprietary
+    url: https://www.manh.com/terms-of-use
+servers:
+- url: https://api.developer.manh.com/omni/v1
+  description: Manhattan Active Omni REST API
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Promising
+  description: Order promising and delivery date estimation
+paths:
+  /promise/check:
+    post:
+      operationId: checkOrderPromise
+      summary: Check order promise (ATP)
+      description: Run order promising logic to determine earliest delivery dates, best fulfillment nodes, and shipping options without committing inventory.
+      tags:
+      - Promising
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromiseRequest'
+      responses:
+        '200':
+          description: Promise options
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromiseResponse'
+components:
+  schemas:
+    PromiseResponse:
+      type: object
+      properties:
+        options:
+          type: array
+          items:
+            type: object
+            properties:
+              fulfillmentType:
+                type: string
+              nodeId:
+                type: string
+              estimatedDeliveryDate:
+                type: string
+                format: date
+              shippingMethod:
+                type: string
+              shippingCost:
+                type: number
+              lines:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    itemId:
+                      type: string
+                    promisedQuantity:
+                      type: number
+    Address:
+      type: object
+      required:
+      - street1
+      - city
+      - state
+      - postalCode
+      - country
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+        phone:
+          type: string
+    PromiseRequest:
+      type: object
+      required:
+      - lines
+      - deliveryAddress
+      properties:
+        lines:
+          type: array
+          items:
+            type: object
+            required:
+            - itemId
+            - quantity
+            properties:
+              itemId:
+                type: string
+              quantity:
+                type: number
+        deliveryAddress:
+          $ref: '#/components/schemas/Address'
+        channelId:
+          type: string
+        requestedDeliveryDate:
+          type: string
+          format: date
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.developer.manh.com/oauth2/token
+          scopes:
+            orders:read: Read order data
+            orders:write: Create and modify orders
+            inventory:read: Read inventory positions
+externalDocs:
+  description: Manhattan Active Omni Developer Portal
+  url: https://omni.developer.manh.com/

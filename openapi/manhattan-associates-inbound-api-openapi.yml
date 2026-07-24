@@ -1,0 +1,218 @@
+openapi: 3.1.0
+info:
+  title: Manhattan Active Omni Order Management Inbound API
+  description: Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.
+  version: 1.0.0
+  contact:
+    name: Manhattan Associates Developer Support
+    url: https://developer.manh.com/
+  license:
+    name: Proprietary
+    url: https://www.manh.com/terms-of-use
+servers:
+- url: https://api.developer.manh.com/omni/v1
+  description: Manhattan Active Omni REST API
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Inbound
+  description: ASN and receipt management
+paths:
+  /receipts:
+    get:
+      operationId: listReceipts
+      summary: List inbound receipts
+      description: Retrieve inbound receipt records for advance shipment notices and received inventory.
+      tags:
+      - Inbound
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - expected
+          - in_progress
+          - completed
+          - closed
+      - name: facilityId
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 50
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: List of receipts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReceiptListResponse'
+    post:
+      operationId: createReceipt
+      summary: Create an advance shipment notice (ASN)
+      description: Create an ASN to pre-notify the warehouse of an inbound shipment.
+      tags:
+      - Inbound
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReceiptCreateRequest'
+      responses:
+        '201':
+          description: ASN created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Receipt'
+  /receipts/{receiptId}:
+    get:
+      operationId: getReceipt
+      summary: Get receipt details
+      description: Retrieve full details of an inbound receipt.
+      tags:
+      - Inbound
+      parameters:
+      - name: receiptId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Receipt details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Receipt'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    ReceiptLine:
+      type: object
+      properties:
+        lineId:
+          type: string
+        itemId:
+          type: string
+        expectedQuantity:
+          type: number
+        receivedQuantity:
+          type: number
+        uom:
+          type: string
+        lotNumber:
+          type: string
+        expirationDate:
+          type: string
+          format: date
+    Receipt:
+      type: object
+      properties:
+        receiptId:
+          type: string
+        externalASNId:
+          type: string
+        facilityId:
+          type: string
+        supplierId:
+          type: string
+        status:
+          type: string
+          enum:
+          - expected
+          - in_progress
+          - completed
+          - closed
+        expectedArrivalDate:
+          type: string
+          format: date
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReceiptLine'
+        createdAt:
+          type: string
+          format: date-time
+    ReceiptLineRequest:
+      type: object
+      required:
+      - itemId
+      - expectedQuantity
+      properties:
+        itemId:
+          type: string
+        expectedQuantity:
+          type: number
+        uom:
+          type: string
+        lotNumber:
+          type: string
+    ReceiptListResponse:
+      type: object
+      properties:
+        receipts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Receipt'
+        totalCount:
+          type: integer
+    ReceiptCreateRequest:
+      type: object
+      required:
+      - facilityId
+      - supplierId
+      - lines
+      properties:
+        externalASNId:
+          type: string
+        facilityId:
+          type: string
+        supplierId:
+          type: string
+        expectedArrivalDate:
+          type: string
+          format: date
+        lines:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/ReceiptLineRequest'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.developer.manh.com/oauth2/token
+          scopes:
+            orders:read: Read order data
+            orders:write: Create and modify orders
+            inventory:read: Read inventory positions
+externalDocs:
+  description: Manhattan Active Omni Developer Portal
+  url: https://omni.developer.manh.com/

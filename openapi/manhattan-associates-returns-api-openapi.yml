@@ -1,0 +1,111 @@
+openapi: 3.1.0
+info:
+  title: Manhattan Active Omni Order Management Inbound Returns API
+  description: Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.
+  version: 1.0.0
+  contact:
+    name: Manhattan Associates Developer Support
+    url: https://developer.manh.com/
+  license:
+    name: Proprietary
+    url: https://www.manh.com/terms-of-use
+servers:
+- url: https://api.developer.manh.com/omni/v1
+  description: Manhattan Active Omni REST API
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Returns
+  description: Return and exchange processing
+paths:
+  /returns:
+    post:
+      operationId: createReturn
+      summary: Create a return
+      description: Initiate a customer return or exchange for a fulfilled order.
+      tags:
+      - Returns
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReturnRequest'
+      responses:
+        '201':
+          description: Return created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Return'
+components:
+  schemas:
+    ReturnRequest:
+      type: object
+      required:
+      - orderId
+      - reason
+      - lines
+      properties:
+        orderId:
+          type: string
+        reason:
+          type: string
+        lines:
+          type: array
+          items:
+            type: object
+            required:
+            - lineId
+            - quantity
+            properties:
+              lineId:
+                type: string
+              quantity:
+                type: number
+    Return:
+      type: object
+      properties:
+        returnId:
+          type: string
+        orderId:
+          type: string
+        status:
+          type: string
+          enum:
+          - created
+          - in_transit
+          - received
+          - completed
+          - denied
+        reason:
+          type: string
+        lines:
+          type: array
+          items:
+            type: object
+            properties:
+              lineId:
+                type: string
+              itemId:
+                type: string
+              quantity:
+                type: number
+              refundAmount:
+                type: number
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.developer.manh.com/oauth2/token
+          scopes:
+            orders:read: Read order data
+            orders:write: Create and modify orders
+            inventory:read: Read inventory positions
+externalDocs:
+  description: Manhattan Active Omni Developer Portal
+  url: https://omni.developer.manh.com/
