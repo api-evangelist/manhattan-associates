@@ -1,0 +1,24 @@
+{
+  "provider": "manhattan-associates",
+  "sources": [
+    "manhattan-associates-inbound-api-openapi.yml",
+    "manhattan-associates-inventory-api-openapi.yml",
+    "manhattan-associates-orders-api-openapi.yml",
+    "manhattan-associates-outbound-api-openapi.yml",
+    "manhattan-associates-promising-api-openapi.yml",
+    "manhattan-associates-returns-api-openapi.yml"
+  ],
+  "outputs": [
+    "manhattan-associates-inbound-api-openapi.yml",
+    "manhattan-associates-inventory-api-openapi.yml",
+    "manhattan-associates-orders-api-openapi.yml",
+    "manhattan-associates-outbound-api-openapi.yml",
+    "manhattan-associates-promising-api-openapi.yml",
+    "manhattan-associates-returns-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
