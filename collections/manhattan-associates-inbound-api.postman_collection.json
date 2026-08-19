@@ -1,0 +1,412 @@
+{
+  "item": [
+    {
+      "id": "49ca052e-cb7a-46e0-bdfa-05ab9bf31150",
+      "name": "Inbound",
+      "description": {
+        "content": "ASN and receipt management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27d69884-0f12-4fb7-acb1-6a2193fed37b",
+          "name": "List inbound receipts",
+          "request": {
+            "name": "List inbound receipts",
+            "description": {
+              "content": "Retrieve inbound receipt records for advance shipment notices and received inventory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "receipts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b103669f-fc08-49f8-a485-77cdb12518a4",
+              "name": "List of receipts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "receipts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"receipts\": [\n    {\n      \"receiptId\": \"string\",\n      \"externalASNId\": \"string\",\n      \"facilityId\": \"string\",\n      \"supplierId\": \"string\",\n      \"status\": \"completed\",\n      \"expectedArrivalDate\": \"1966-08-06\",\n      \"lines\": [\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"expectedQuantity\": 1464.073799195247,\n          \"receivedQuantity\": 307.5810802464518,\n          \"uom\": \"string\",\n          \"lotNumber\": \"string\",\n          \"expirationDate\": \"1981-12-11\"\n        },\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"expectedQuantity\": 4223.376272671506,\n          \"receivedQuantity\": 2090.5323695840593,\n          \"uom\": \"string\",\n          \"lotNumber\": \"string\",\n          \"expirationDate\": \"2000-02-11\"\n        }\n      ],\n      \"createdAt\": \"1966-09-02T03:22:43.580Z\"\n    },\n    {\n      \"receiptId\": \"string\",\n      \"externalASNId\": \"string\",\n      \"facilityId\": \"string\",\n      \"supplierId\": \"string\",\n      \"status\": \"in_progress\",\n      \"expectedArrivalDate\": \"2000-12-13\",\n      \"lines\": [\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"expectedQuantity\": 4090.820189246195,\n          \"receivedQuantity\": 1947.6403178289393,\n          \"uom\": \"string\",\n          \"lotNumber\": \"string\",\n          \"expirationDate\": \"2006-02-03\"\n        },\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"expectedQuantity\": 285.62468401468146,\n          \"receivedQuantity\": 9010.886853420867,\n          \"uom\": \"string\",\n          \"lotNumber\": \"string\",\n          \"expirationDate\": \"1963-05-18\"\n        }\n      ],\n      \"createdAt\": \"2010-10-03T09:02:30.767Z\"\n    }\n  ],\n  \"totalCount\": 3986\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51a46dcc-3895-4a6a-9e50-7d5576fe6624",
+          "name": "Create an advance shipment notice (ASN)",
+          "request": {
+            "name": "Create an advance shipment notice (ASN)",
+            "description": {
+              "content": "Create an ASN to pre-notify the warehouse of an inbound shipment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "receipts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"facilityId\": \"<string>\",\n  \"supplierId\": \"<string>\",\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"expectedQuantity\": \"<number>\",\n      \"uom\": \"<string>\",\n      \"lotNumber\": \"<string>\"\n    }\n  ],\n  \"externalASNId\": \"<string>\",\n  \"expectedArrivalDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8cb8a67f-05ab-4a96-90e4-3efb25026a4b",
+              "name": "ASN created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "receipts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"facilityId\": \"<string>\",\n  \"supplierId\": \"<string>\",\n  \"lines\": [\n    {\n      \"itemId\": \"string\",\n      \"expectedQuantity\": 6660.2924765004,\n      \"uom\": \"string\",\n      \"lotNumber\": \"string\"\n    }\n  ],\n  \"externalASNId\": \"<string>\",\n  \"expectedArrivalDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"receiptId\": \"string\",\n  \"externalASNId\": \"string\",\n  \"facilityId\": \"string\",\n  \"supplierId\": \"string\",\n  \"status\": \"in_progress\",\n  \"expectedArrivalDate\": \"1995-12-15\",\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"expectedQuantity\": 8813.272956847764,\n      \"receivedQuantity\": 3405.043067782878,\n      \"uom\": \"string\",\n      \"lotNumber\": \"string\",\n      \"expirationDate\": \"1959-11-15\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"expectedQuantity\": 867.0581406583766,\n      \"receivedQuantity\": 2944.1438431321753,\n      \"uom\": \"string\",\n      \"lotNumber\": \"string\",\n      \"expirationDate\": \"2016-10-19\"\n    }\n  ],\n  \"createdAt\": \"2001-03-26T18:08:11.942Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "884ad14c-61e3-421b-bf30-d536ea2f608e",
+          "name": "Get receipt details",
+          "request": {
+            "name": "Get receipt details",
+            "description": {
+              "content": "Retrieve full details of an inbound receipt.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "receipts",
+                ":receiptId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "receiptId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed76d9a4-7b3a-43e2-b080-1ba31c15b558",
+              "name": "Receipt details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "receipts",
+                    ":receiptId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "receiptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"receiptId\": \"string\",\n  \"externalASNId\": \"string\",\n  \"facilityId\": \"string\",\n  \"supplierId\": \"string\",\n  \"status\": \"in_progress\",\n  \"expectedArrivalDate\": \"1995-12-15\",\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"expectedQuantity\": 8813.272956847764,\n      \"receivedQuantity\": 3405.043067782878,\n      \"uom\": \"string\",\n      \"lotNumber\": \"string\",\n      \"expirationDate\": \"1959-11-15\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"expectedQuantity\": 867.0581406583766,\n      \"receivedQuantity\": 2944.1438431321753,\n      \"uom\": \"string\",\n      \"lotNumber\": \"string\",\n      \"expirationDate\": \"2016-10-19\"\n    }\n  ],\n  \"createdAt\": \"2001-03-26T18:08:11.942Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b6c9415-806b-46fa-bd69-8676068c004c",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "receipts",
+                    ":receiptId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "receiptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.developer.manh.com/omni/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "orders:read orders:write inventory:read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.developer.manh.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "de5f216a-dc52-482c-9808-a4fa661a8174",
+    "name": "Manhattan Active Omni Order Management Inbound API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.\n\nContact Support:\n Name: Manhattan Associates Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

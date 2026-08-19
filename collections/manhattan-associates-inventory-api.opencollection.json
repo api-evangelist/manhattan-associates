@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Manhattan Active Omni Order Management Inbound Inventory API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.developer.manh.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check inventory availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developer.manh.com/omni/v1/inventory/availability",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query real-time inventory availability for a list of items across fulfillment nodes, applying ATP (Available to Promise) rules."
+        },
+        {
+          "info": {
+            "name": "Get inventory positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.developer.manh.com/omni/v1/inventory/positions",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve current inventory positions for items across fulfillment locations."
+        },
+        {
+          "info": {
+            "name": "Query warehouse inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.developer.manh.com/omni/v1/inventory",
+            "params": [
+              {
+                "name": "facilityId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lotNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query real-time inventory positions within the warehouse by item, location, and lot."
+        },
+        {
+          "info": {
+            "name": "Create an inventory transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developer.manh.com/omni/v1/transfers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Transfer inventory between locations, facilities, or zones within the warehouse."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

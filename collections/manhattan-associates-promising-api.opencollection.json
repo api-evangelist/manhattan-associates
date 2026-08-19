@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Manhattan Active Omni Order Management Inbound Promising API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.developer.manh.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Promising",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check order promise (ATP)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developer.manh.com/omni/v1/promise/check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run order promising logic to determine earliest delivery dates, best fulfillment nodes, and shipping options without committing inventory."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,389 @@
+{
+  "item": [
+    {
+      "id": "25a03b76-86f8-45d2-8663-ff75eaea80e0",
+      "name": "Outbound",
+      "description": {
+        "content": "Outbound order fulfillment and shipment",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2815346d-e576-48b3-b079-b4e13aa66334",
+          "name": "List outbound orders",
+          "request": {
+            "name": "List outbound orders",
+            "description": {
+              "content": "Retrieve warehouse outbound orders for picking, packing, and shipping.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outbound",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "waveId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "936dca7a-78b5-4aea-9a0d-4666e7b7b679",
+              "name": "List of outbound orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outbound",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "waveId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orders\": [\n    {\n      \"orderId\": \"string\",\n      \"externalOrderId\": \"string\",\n      \"facilityId\": \"string\",\n      \"status\": \"ready_to_ship\",\n      \"shipToAddress\": {\n        \"name\": \"string\",\n        \"street1\": \"string\",\n        \"street2\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": \"string\",\n        \"phone\": \"string\"\n      },\n      \"lines\": [\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"orderedQuantity\": 3942.2057365628584,\n          \"pickedQuantity\": 6903.970033354465,\n          \"shippedQuantity\": 4197.234557945521,\n          \"uom\": \"string\",\n          \"status\": \"string\"\n        },\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"orderedQuantity\": 4100.832462802711,\n          \"pickedQuantity\": 2641.5731056428394,\n          \"shippedQuantity\": 563.4468223646084,\n          \"uom\": \"string\",\n          \"status\": \"string\"\n        }\n      ],\n      \"waveId\": \"string\",\n      \"carrier\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"shippedAt\": \"1947-10-12T10:48:35.509Z\"\n    },\n    {\n      \"orderId\": \"string\",\n      \"externalOrderId\": \"string\",\n      \"facilityId\": \"string\",\n      \"status\": \"ready_to_ship\",\n      \"shipToAddress\": {\n        \"name\": \"string\",\n        \"street1\": \"string\",\n        \"street2\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": \"string\",\n        \"phone\": \"string\"\n      },\n      \"lines\": [\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"orderedQuantity\": 3828.517862879933,\n          \"pickedQuantity\": 6749.328936652056,\n          \"shippedQuantity\": 2908.2389319031886,\n          \"uom\": \"string\",\n          \"status\": \"string\"\n        },\n        {\n          \"lineId\": \"string\",\n          \"itemId\": \"string\",\n          \"orderedQuantity\": 1143.08289236128,\n          \"pickedQuantity\": 103.03906751658931,\n          \"shippedQuantity\": 2068.2235272993153,\n          \"uom\": \"string\",\n          \"status\": \"string\"\n        }\n      ],\n      \"waveId\": \"string\",\n      \"carrier\": \"string\",\n      \"trackingNumber\": \"string\",\n      \"shippedAt\": \"2015-01-03T20:23:27.058Z\"\n    }\n  ],\n  \"totalCount\": 7312\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cc9ad16-fcd4-461a-9fab-c0c705330316",
+          "name": "Create an outbound order",
+          "request": {
+            "name": "Create an outbound order",
+            "description": {
+              "content": "Submit a new outbound order for warehouse fulfillment execution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outbound",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"facilityId\": \"<string>\",\n  \"shipToAddress\": {\n    \"name\": \"<string>\",\n    \"street1\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"uom\": \"<string>\"\n    }\n  ],\n  \"externalOrderId\": \"<string>\",\n  \"requestedShipDate\": \"<date>\",\n  \"carrier\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "09045de0-3ceb-42f3-a505-aca6a9790c80",
+              "name": "Outbound order created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outbound",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"facilityId\": \"<string>\",\n  \"shipToAddress\": {\n    \"name\": \"string\",\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"uom\": \"<string>\"\n    }\n  ],\n  \"externalOrderId\": \"<string>\",\n  \"requestedShipDate\": \"<date>\",\n  \"carrier\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\",\n  \"externalOrderId\": \"string\",\n  \"facilityId\": \"string\",\n  \"status\": \"released\",\n  \"shipToAddress\": {\n    \"name\": \"string\",\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"orderedQuantity\": 5078.474798343935,\n      \"pickedQuantity\": 9246.244509313266,\n      \"shippedQuantity\": 2158.5524458508,\n      \"uom\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"orderedQuantity\": 8644.219860638339,\n      \"pickedQuantity\": 7992.237607188072,\n      \"shippedQuantity\": 4700.987066147797,\n      \"uom\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"waveId\": \"string\",\n  \"carrier\": \"string\",\n  \"trackingNumber\": \"string\",\n  \"shippedAt\": \"1988-04-25T01:57:09.858Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd42bdd2-cc1b-4722-aebe-da52870827e9",
+          "name": "Confirm shipment of an outbound order",
+          "request": {
+            "name": "Confirm shipment of an outbound order",
+            "description": {
+              "content": "Record the shipment of a packed outbound order, capturing carrier and tracking information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outbound",
+                "orders",
+                ":orderId",
+                "ship"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"carrier\": \"<string>\",\n  \"trackingNumber\": \"<string>\",\n  \"shippedAt\": \"<dateTime>\",\n  \"weight\": \"<number>\",\n  \"weightUom\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "49ccb6bd-896f-42d7-8036-8b41015781c5",
+              "name": "Shipment confirmed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outbound",
+                    "orders",
+                    ":orderId",
+                    "ship"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"carrier\": \"<string>\",\n  \"trackingNumber\": \"<string>\",\n  \"shippedAt\": \"<dateTime>\",\n  \"weight\": \"<number>\",\n  \"weightUom\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\",\n  \"externalOrderId\": \"string\",\n  \"facilityId\": \"string\",\n  \"status\": \"released\",\n  \"shipToAddress\": {\n    \"name\": \"string\",\n    \"street1\": \"string\",\n    \"street2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"orderedQuantity\": 5078.474798343935,\n      \"pickedQuantity\": 9246.244509313266,\n      \"shippedQuantity\": 2158.5524458508,\n      \"uom\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"orderedQuantity\": 8644.219860638339,\n      \"pickedQuantity\": 7992.237607188072,\n      \"shippedQuantity\": 4700.987066147797,\n      \"uom\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"waveId\": \"string\",\n  \"carrier\": \"string\",\n  \"trackingNumber\": \"string\",\n  \"shippedAt\": \"1988-04-25T01:57:09.858Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.developer.manh.com/omni/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "orders:read orders:write inventory:read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.developer.manh.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6281e422-5f3f-4708-901a-a6777ab60929",
+    "name": "Manhattan Active Omni Order Management Inbound Outbound API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.\n\nContact Support:\n Name: Manhattan Associates Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

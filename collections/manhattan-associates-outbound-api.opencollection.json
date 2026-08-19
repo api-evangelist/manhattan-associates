@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Manhattan Active Omni Order Management Inbound Outbound API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.developer.manh.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Outbound",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List outbound orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.developer.manh.com/omni/v1/outbound/orders",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "waveId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "facilityId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve warehouse outbound orders for picking, packing, and shipping."
+        },
+        {
+          "info": {
+            "name": "Create an outbound order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developer.manh.com/omni/v1/outbound/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a new outbound order for warehouse fulfillment execution."
+        },
+        {
+          "info": {
+            "name": "Confirm shipment of an outbound order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developer.manh.com/omni/v1/outbound/orders/:orderId/ship",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Record the shipment of a packed outbound order, capturing carrier and tracking information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

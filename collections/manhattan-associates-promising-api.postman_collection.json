@@ -1,0 +1,150 @@
+{
+  "item": [
+    {
+      "id": "308fbb4d-3456-4230-af9d-4064b5561e1e",
+      "name": "Promising",
+      "description": {
+        "content": "Order promising and delivery date estimation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0ab2008d-fd66-4b69-8917-c887f0bdb556",
+          "name": "Check order promise (ATP)",
+          "request": {
+            "name": "Check order promise (ATP)",
+            "description": {
+              "content": "Run order promising logic to determine earliest delivery dates, best fulfillment nodes, and shipping options without committing inventory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "promise",
+                "check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"deliveryAddress\": {\n    \"street1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"channelId\": \"<string>\",\n  \"requestedDeliveryDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8347eb12-302d-49ca-87c5-5b07b55ba9ca",
+              "name": "Promise options",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promise",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"deliveryAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"channelId\": \"<string>\",\n  \"requestedDeliveryDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"options\": [\n    {\n      \"fulfillmentType\": \"string\",\n      \"nodeId\": \"string\",\n      \"estimatedDeliveryDate\": \"1976-02-22\",\n      \"shippingMethod\": \"string\",\n      \"shippingCost\": 7186.862429004799,\n      \"lines\": [\n        {\n          \"itemId\": \"string\",\n          \"promisedQuantity\": 7572.440778333041\n        },\n        {\n          \"itemId\": \"string\",\n          \"promisedQuantity\": 1534.485192660021\n        }\n      ]\n    },\n    {\n      \"fulfillmentType\": \"string\",\n      \"nodeId\": \"string\",\n      \"estimatedDeliveryDate\": \"2023-10-07\",\n      \"shippingMethod\": \"string\",\n      \"shippingCost\": 199.23864677359626,\n      \"lines\": [\n        {\n          \"itemId\": \"string\",\n          \"promisedQuantity\": 9720.282583306767\n        },\n        {\n          \"itemId\": \"string\",\n          \"promisedQuantity\": 5813.540826254415\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.developer.manh.com/omni/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "orders:read orders:write inventory:read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.developer.manh.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b1ee3dce-ed67-4460-8f58-300462311328",
+    "name": "Manhattan Active Omni Order Management Inbound Promising API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.\n\nContact Support:\n Name: Manhattan Associates Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

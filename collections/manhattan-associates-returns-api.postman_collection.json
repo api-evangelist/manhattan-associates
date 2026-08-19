@@ -1,0 +1,148 @@
+{
+  "item": [
+    {
+      "id": "60341355-a4ee-4cce-a2c2-a427609b62bd",
+      "name": "Returns",
+      "description": {
+        "content": "Return and exchange processing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "12eec4d5-1865-42de-a0b3-41eaf95da19b",
+          "name": "Create a return",
+          "request": {
+            "name": "Create a return",
+            "description": {
+              "content": "Initiate a customer return or exchange for a fulfilled order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "returns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"lines\": [\n    {\n      \"lineId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"lineId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8793c6cc-23f4-4e2f-a496-c41a46300bdd",
+              "name": "Return created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "returns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"lines\": [\n    {\n      \"lineId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"lineId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"returnId\": \"string\",\n  \"orderId\": \"string\",\n  \"status\": \"completed\",\n  \"reason\": \"string\",\n  \"lines\": [\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"quantity\": 1577.7267298209285,\n      \"refundAmount\": 1582.1481875848442\n    },\n    {\n      \"lineId\": \"string\",\n      \"itemId\": \"string\",\n      \"quantity\": 7959.730882202241,\n      \"refundAmount\": 5623.415077404972\n    }\n  ],\n  \"createdAt\": \"1981-01-28T11:47:51.798Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.developer.manh.com/omni/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "orders:read orders:write inventory:read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.developer.manh.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0fc972a1-ffed-4a97-8ea3-8c0229cbe256",
+    "name": "Manhattan Active Omni Order Management Inbound Returns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.\n\nContact Support:\n Name: Manhattan Associates Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

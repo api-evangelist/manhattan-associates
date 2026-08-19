@@ -1,0 +1,483 @@
+{
+  "item": [
+    {
+      "id": "fa895f0c-a959-4da7-a129-a07e399f0f70",
+      "name": "Inventory",
+      "description": {
+        "content": "Real-time inventory positions and ATP",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0357c87-e568-4f0c-9f57-e8b6ca5e14a6",
+          "name": "Check inventory availability",
+          "request": {
+            "name": "Check inventory availability",
+            "description": {
+              "content": "Query real-time inventory availability for a list of items across fulfillment nodes, applying ATP (Available to Promise) rules.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory",
+                "availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"deliveryAddress\": {\n    \"street1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"channelId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "537a1052-0441-4051-ab24-38f89724146e",
+              "name": "Availability results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"deliveryAddress\": {\n    \"street1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"street2\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"channelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"itemId\": \"string\",\n      \"requestedQuantity\": 5531.934677849557,\n      \"availableQuantity\": 4187.688609298258,\n      \"available\": true,\n      \"availabilityDate\": \"2022-09-07\",\n      \"nodes\": [\n        {\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"availableQuantity\": 9587.958493789913\n        },\n        {\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"availableQuantity\": 4189.822578273384\n        }\n      ]\n    },\n    {\n      \"itemId\": \"string\",\n      \"requestedQuantity\": 3041.2528728881616,\n      \"availableQuantity\": 9588.102372746434,\n      \"available\": false,\n      \"availabilityDate\": \"2002-04-08\",\n      \"nodes\": [\n        {\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"availableQuantity\": 1193.9362071953008\n        },\n        {\n          \"nodeId\": \"string\",\n          \"nodeName\": \"string\",\n          \"availableQuantity\": 3553.2061810742775\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddd24808-1d36-4856-ad08-6fbd0027ec69",
+          "name": "Get inventory positions",
+          "request": {
+            "name": "Get inventory positions",
+            "description": {
+              "content": "Retrieve current inventory positions for items across fulfillment locations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory",
+                "positions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "itemId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "locationId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14a5a313-e0ba-48e1-afaf-f14f1038f58f",
+              "name": "Inventory positions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    "positions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "itemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"positions\": [\n    {\n      \"itemId\": \"string\",\n      \"locationId\": \"string\",\n      \"locationName\": \"string\",\n      \"onHand\": 6329.924531848311,\n      \"reserved\": 6975.115946238608,\n      \"available\": 2239.63703305328,\n      \"onOrder\": 2432.891063661106,\n      \"updatedAt\": \"2021-03-04T23:15:19.409Z\"\n    },\n    {\n      \"itemId\": \"string\",\n      \"locationId\": \"string\",\n      \"locationName\": \"string\",\n      \"onHand\": 9372.780504952812,\n      \"reserved\": 598.4889360143997,\n      \"available\": 4513.336777355667,\n      \"onOrder\": 872.0902780431594,\n      \"updatedAt\": \"1964-04-25T15:02:20.523Z\"\n    }\n  ],\n  \"totalCount\": 3878\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb41e23a-813c-408c-bfff-5d641fd7c1a1",
+          "name": "Query warehouse inventory",
+          "request": {
+            "name": "Query warehouse inventory",
+            "description": {
+              "content": "Query real-time inventory positions within the warehouse by item, location, and lot.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "itemId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "locationId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lotNumber",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3145c696-ac9b-494d-a0b6-687f19569190",
+              "name": "Inventory records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "facilityId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "itemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lotNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"records\": [\n    {\n      \"itemId\": \"string\",\n      \"facilityId\": \"string\",\n      \"locationId\": \"string\",\n      \"locationName\": \"string\",\n      \"lotNumber\": \"string\",\n      \"onHandQuantity\": 9477.502752064122,\n      \"allocatedQuantity\": 9064.600659625794,\n      \"availableQuantity\": 2298.295584208202,\n      \"uom\": \"string\",\n      \"expirationDate\": \"2012-04-13\",\n      \"updatedAt\": \"1971-08-19T03:58:26.848Z\"\n    },\n    {\n      \"itemId\": \"string\",\n      \"facilityId\": \"string\",\n      \"locationId\": \"string\",\n      \"locationName\": \"string\",\n      \"lotNumber\": \"string\",\n      \"onHandQuantity\": 1143.2824524653772,\n      \"allocatedQuantity\": 6513.58253893166,\n      \"availableQuantity\": 7272.246597889563,\n      \"uom\": \"string\",\n      \"expirationDate\": \"1998-12-03\",\n      \"updatedAt\": \"1980-09-07T11:21:37.357Z\"\n    }\n  ],\n  \"totalCount\": 2242\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31ce3b51-18a1-4a8b-9b32-f734dd31a9ca",
+          "name": "Create an inventory transfer",
+          "request": {
+            "name": "Create an inventory transfer",
+            "description": {
+              "content": "Transfer inventory between locations, facilities, or zones within the warehouse.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"facilityId\": \"<string>\",\n  \"fromLocationId\": \"<string>\",\n  \"toLocationId\": \"<string>\",\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"lotNumber\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89326726-b183-45e6-8f6c-100c9d514c26",
+              "name": "Transfer created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"facilityId\": \"<string>\",\n  \"fromLocationId\": \"<string>\",\n  \"toLocationId\": \"<string>\",\n  \"lines\": [\n    {\n      \"itemId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"lotNumber\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transferId\": \"string\",\n  \"fromLocationId\": \"string\",\n  \"toLocationId\": \"string\",\n  \"facilityId\": \"string\",\n  \"lines\": [\n    {\n      \"itemId\": \"string\",\n      \"quantity\": 8997.062704013233,\n      \"lotNumber\": \"string\"\n    },\n    {\n      \"itemId\": \"string\",\n      \"quantity\": 6724.970056792855,\n      \"lotNumber\": \"string\"\n    }\n  ],\n  \"status\": \"pending\",\n  \"createdAt\": \"1974-03-23T23:58:38.939Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.developer.manh.com/omni/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "orders:read orders:write inventory:read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.developer.manh.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e8f64a53-7665-40d4-adfb-6ba6828f9ef2",
+    "name": "Manhattan Active Omni Order Management Inbound Inventory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.\n\nContact Support:\n Name: Manhattan Associates Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
