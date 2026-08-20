@@ -21,6 +21,11 @@ apis:
   tags:
   - Logistics
   - Platform
+  - Software-as-a-Service
+  - Supply Chain
+  tags_raw:
+  - Logistics
+  - Platform
   - SaaS
   - Supply Chain
   image: >-
@@ -120,6 +125,8 @@ apis:
   humanURL: https://platform.developer.manh.com/
   baseURL: https://api.developer.manh.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
