@@ -215,6 +215,9 @@ apis:
   - type: Documentation
     url: https://supplychain.developer.manh.com/
 common:
+  - type: CapabilityMap
+    url: capabilities/manhattan-associates-capability-edges.yml
+    name: Manhattan Associates Business Capability Map
   - type: AgenticAccess
     url: agentic-access/manhattan-associates-agentic-access.yml
   - type: DomainSecurity

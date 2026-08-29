@@ -1,0 +1,55 @@
+slug: manhattan-associates
+provider: Manhattan Associates
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Promising
+  spec_file: manhattan-associates-promising-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.82
+  evidence: POST /promise/check "Check order promise (ATP)"; description "order promising, order orchestration,
+    inventory availability"
+  reason: Available-to-promise checking is explicitly order promising, the named content of Order Fulfilment
+    Management.
+- tag: Inventory
+  spec_file: manhattan-associates-inventory-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.78
+  evidence: POST /inventory/availability "Check inventory availability", GET /inventory/positions "Get
+    inventory positions", POST /transfers "Create an inventory transfer"
+  reason: Availability checks, inventory positions and transfers are core inventory management across
+    the network; the mix of availability, positions and transfers spans several L2s so none is asserted.
+- tag: Orders
+  spec_file: manhattan-associates-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.72
+  evidence: POST /orders "Create an order", POST /orders/{orderId}/cancel "Cancel an order", schema Fulfillment;
+    spec description "omnichannel order management and fulfillment"
+  reason: Order capture, update and cancellation with fulfilment data is order fulfilment orchestration
+    in the supply chain. Could also be read as sales order capture, hence not higher.
+- tag: Inbound
+  spec_file: manhattan-associates-inbound-api-openapi.yml
+  capability_id: BC-2460.10
+  capability_id_l1: BC-2460
+  capability_name: Inbound Operations Management
+  confidence: 0.7
+  evidence: GET /receipts "List inbound receipts", POST /receipts "Create an advance shipment notice (ASN)",
+    schema ReceiptLine
+  reason: Receipts and ASNs govern goods entering a facility, matching Inbound Operations Management.
+    Some chance this is treated purely as order-management data rather than warehouse execution.
