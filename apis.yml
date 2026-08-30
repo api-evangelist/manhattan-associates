@@ -41,8 +41,6 @@ apis:
   - Platform
   - SaaS
   - Supply Chain
-  image: >-
-    https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
   humanURL: https://platform.developer.manh.com/
   baseURL: https://api.developer.manh.com
   properties:
@@ -63,8 +61,6 @@ apis:
   - Logistics
   - Planning
   - Supply Chain
-  image: >-
-    https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
   humanURL: https://scp.developer.manh.com/
   baseURL: https://api.developer.manh.com
   properties:
@@ -81,8 +77,6 @@ apis:
   - Supply Chain
   - Transportation
   - Warehouse
-  image: >-
-    https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/image.png
   humanURL: https://www.manh.com/
   baseURL: https://api.manh.example.com
   properties:
