@@ -1,5 +1,5 @@
 aid: manhattan-associates
-name: "Manhattan Associates"
+name: Manhattan Associates
 deliveryModel:
   model: saas
   open_source: false
@@ -50,10 +50,9 @@ apis:
     type: GettingStarted
   - url: https://developer.manh.com/docs/how-to/rest-api/
     type: Authentication
-  description: >-
-    Manhattan Active Platform APIs provide core platform capabilities for authentication, tenant configuration,
-    and integration with Manhattan Active solutions. REST APIs follow OAuth client credentials flows and
-    require platform administrator setup.
+  description: Manhattan Active Platform APIs provide core platform capabilities for authentication, tenant
+    configuration, and integration with Manhattan Active solutions. REST APIs follow OAuth client credentials
+    flows and require platform administrator setup.
 - aid: manhattan-associates:manhattan-active-supply-chain-planning-api
   name: Manhattan Active Supply Chain Planning API
   tags:
@@ -66,10 +65,9 @@ apis:
   properties:
   - url: https://scp.developer.manh.com/
     type: Documentation
-  description: >-
-    Manhattan Active Supply Chain Planning APIs provide demand forecasting, inventory optimization, and
-    replenishment planning capabilities to optimize stock levels and reduce carrying costs across supply
-    chain networks.
+  description: Manhattan Active Supply Chain Planning APIs provide demand forecasting, inventory optimization,
+    and replenishment planning capabilities to optimize stock levels and reduce carrying costs across
+    supply chain networks.
 - aid: manhattan-associates:manhattan-associates-api
   name: Manhattan Associates TMS/WMS API
   tags:
@@ -82,10 +80,9 @@ apis:
   properties:
   - url: https://www.manh.com/
     type: Documentation
-  description: >-
-    Manhattan Associates provides warehouse management (WMS) and transportation management (TMS) APIs
-    for supply chain execution. APIs enable order management, inventory tracking, shipment planning, labor
-    management, and yard management for distribution and logistics operations.
+  description: Manhattan Associates provides warehouse management (WMS) and transportation management
+    (TMS) APIs for supply chain execution. APIs enable order management, inventory tracking, shipment
+    planning, labor management, and yard management for distribution and logistics operations.
 - aid: manhattan-associates:manhattan-associates-inbound-api
   name: manhattan-associates Inbound API
   description: ASN and receipt management
@@ -99,11 +96,9 @@ apis:
   - type: Documentation
     url: https://omni.developer.manh.com/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
   - type: JSONLDContext
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
   - type: Documentation
     url: https://supplychain.developer.manh.com/
 - aid: manhattan-associates:manhattan-associates-inventory-api
@@ -119,11 +114,9 @@ apis:
   - type: Documentation
     url: https://omni.developer.manh.com/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
   - type: JSONLDContext
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
   - type: Documentation
     url: https://supplychain.developer.manh.com/
 - aid: manhattan-associates:manhattan-associates-orders-api
@@ -141,11 +134,9 @@ apis:
   - type: Documentation
     url: https://omni.developer.manh.com/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
   - type: JSONLDContext
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
   - type: Documentation
     url: https://supplychain.developer.manh.com/
 - aid: manhattan-associates:manhattan-associates-outbound-api
@@ -161,11 +152,9 @@ apis:
   - type: Documentation
     url: https://omni.developer.manh.com/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
   - type: JSONLDContext
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
   - type: Documentation
     url: https://supplychain.developer.manh.com/
 - aid: manhattan-associates:manhattan-associates-promising-api
@@ -181,11 +170,9 @@ apis:
   - type: Documentation
     url: https://omni.developer.manh.com/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
   - type: JSONLDContext
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
   - type: Documentation
     url: https://supplychain.developer.manh.com/
 - aid: manhattan-associates:manhattan-associates-returns-api
@@ -201,65 +188,64 @@ apis:
   - type: Documentation
     url: https://omni.developer.manh.com/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
   - type: JSONLDContext
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
   - type: Documentation
     url: https://supplychain.developer.manh.com/
 common:
-  - type: CapabilityMap
-    url: capabilities/manhattan-associates-capability-edges.yml
-    name: Manhattan Associates Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/manhattan-associates-agentic-access.yml
-  - type: DomainSecurity
-    url: security/manhattan-associates-domain-security.yml
-  - type: Authentication
-    url: authentication/manhattan-associates-authentication.yml
-  - type: OAuthScopes
-    url: scopes/manhattan-associates-scopes.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/manhattan-associates
-  - url: https://developer.manh.com/
-    type: Portal
-  - url: https://www.manh.com/
-    type: Website
-  - url: https://developer.manh.com/docs/getting-started
-    type: GettingStarted
-  - url: https://developer.manh.com/docs/how-to/rest-api/
-    type: Authentication
-  - url: https://api.developer.manh.com/
-    type: Documentation
-  - url: https://www.manh.com/terms-of-use
-    type: TermsOfService
-  - url: https://www.manh.com/privacy-policy
-    type: PrivacyPolicy
-  - url: https://www.manh.com/our-insights/resources/blog
-    type: Blog
-  - url: https://www.manh.com/trust-center
-    type: Support
-  - url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml
-    type: OpenAPI
-  - url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml
-    type: OpenAPI
-  - url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
-    type: JSONSchema
-  - url: >-
-      https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
-    type: JSONLDContext
-  - type: Integrations
-    url: https://www.manh.com/about-us/partners
+- type: CapabilityMap
+  url: capabilities/manhattan-associates-capability-edges.yml
+  name: Manhattan Associates Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/manhattan-associates-agentic-access.yml
+- type: DomainSecurity
+  url: security/manhattan-associates-domain-security.yml
+- type: Authentication
+  url: authentication/manhattan-associates-authentication.yml
+- type: OAuthScopes
+  url: scopes/manhattan-associates-scopes.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/manhattan-associates
+- url: https://developer.manh.com/
+  type: Portal
+- url: https://www.manh.com/
+  type: Website
+- url: https://developer.manh.com/docs/getting-started
+  type: GettingStarted
+- url: https://developer.manh.com/docs/how-to/rest-api/
+  type: Authentication
+- url: https://api.developer.manh.com/
+  type: Documentation
+- url: https://www.manh.com/terms-of-use
+  type: TermsOfService
+- url: https://www.manh.com/privacy-policy
+  type: PrivacyPolicy
+- url: https://www.manh.com/our-insights/resources/blog
+  type: Blog
+- url: https://www.manh.com/trust-center
+  type: Support
+- url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml
+  type: OpenAPI
+- url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml
+  type: OpenAPI
+- url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json
+  type: JSONSchema
+- url: https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld
+  type: JSONLDContext
+- type: Integrations
+  url: https://www.manh.com/about-us/partners
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
-modified: '2026-05-19'
-description: >-
-  Manhattan Associates is a leading provider of supply chain commerce solutions, enabling unified commerce across
-  stores, warehouses, and inventory across the supply chain.
+modified: '2026-09-16'
+description: Manhattan Associates is a leading provider of supply chain commerce solutions, enabling unified
+  commerce across stores, warehouses, and inventory across the supply chain.
 integrations:
-  - name: Facebook
+- name: Facebook
+tags:
+- Logistics
+- Supply Chain
+- Platform
+- Software-as-a-Service
+- Transportation
