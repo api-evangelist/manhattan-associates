@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Manhattan Active Omni Order Management Inbound Returns API
+  title: Manhattan Active Omni Order Management Returns API
   description: Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.
   version: 1.0.0
   contact:
@@ -40,29 +40,6 @@ paths:
                 $ref: '#/components/schemas/Return'
 components:
   schemas:
-    ReturnRequest:
-      type: object
-      required:
-      - orderId
-      - reason
-      - lines
-      properties:
-        orderId:
-          type: string
-        reason:
-          type: string
-        lines:
-          type: array
-          items:
-            type: object
-            required:
-            - lineId
-            - quantity
-            properties:
-              lineId:
-                type: string
-              quantity:
-                type: number
     Return:
       type: object
       properties:
@@ -96,6 +73,29 @@ components:
         createdAt:
           type: string
           format: date-time
+    ReturnRequest:
+      type: object
+      required:
+      - orderId
+      - reason
+      - lines
+      properties:
+        orderId:
+          type: string
+        reason:
+          type: string
+        lines:
+          type: array
+          items:
+            type: object
+            required:
+            - lineId
+            - quantity
+            properties:
+              lineId:
+                type: string
+              quantity:
+                type: number
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

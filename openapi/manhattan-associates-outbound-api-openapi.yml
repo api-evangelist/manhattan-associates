@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Manhattan Active Omni Order Management Inbound Outbound API
-  description: Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.
+  title: Manhattan Active Supply Chain (WMS) Outbound API
+  description: Manhattan Active Supply Chain APIs provide warehouse management (WMS) capabilities including inventory tracking, order processing, labor management, yard management, and shipment execution for distribution center operations.
   version: 1.0.0
   contact:
     name: Manhattan Associates Developer Support
@@ -10,8 +10,8 @@ info:
     name: Proprietary
     url: https://www.manh.com/terms-of-use
 servers:
-- url: https://api.developer.manh.com/omni/v1
-  description: Manhattan Active Omni REST API
+- url: https://api.developer.manh.com/wms/v1
+  description: Manhattan Active Supply Chain (WMS) REST API
 security:
 - OAuth2ClientCredentials: []
 tags:
@@ -120,6 +120,32 @@ components:
           type: string
         status:
           type: string
+    ShipmentConfirmRequest:
+      type: object
+      required:
+      - carrier
+      - trackingNumber
+      properties:
+        carrier:
+          type: string
+        trackingNumber:
+          type: string
+        shippedAt:
+          type: string
+          format: date-time
+        weight:
+          type: number
+        weightUom:
+          type: string
+    OutboundOrderListResponse:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutboundOrder'
+        totalCount:
+          type: integer
     OutboundOrder:
       type: object
       properties:
@@ -152,32 +178,6 @@ components:
         shippedAt:
           type: string
           format: date-time
-    ShipmentConfirmRequest:
-      type: object
-      required:
-      - carrier
-      - trackingNumber
-      properties:
-        carrier:
-          type: string
-        trackingNumber:
-          type: string
-        shippedAt:
-          type: string
-          format: date-time
-        weight:
-          type: number
-        weightUom:
-          type: string
-    OutboundOrderListResponse:
-      type: object
-      properties:
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/OutboundOrder'
-        totalCount:
-          type: integer
     ShipAddress:
       type: object
       properties:
@@ -237,9 +237,8 @@ components:
         clientCredentials:
           tokenUrl: https://auth.developer.manh.com/oauth2/token
           scopes:
-            orders:read: Read order data
-            orders:write: Create and modify orders
-            inventory:read: Read inventory positions
+            wms:read: Read warehouse data
+            wms:write: Write warehouse operations
 externalDocs:
-  description: Manhattan Active Omni Developer Portal
-  url: https://omni.developer.manh.com/
+  description: Manhattan Active Supply Chain Developer Portal
+  url: https://supplychain.developer.manh.com/
