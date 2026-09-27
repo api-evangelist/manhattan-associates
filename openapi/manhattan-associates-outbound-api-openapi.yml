@@ -103,49 +103,6 @@ paths:
                 $ref: '#/components/schemas/OutboundOrder'
 components:
   schemas:
-    OutboundLine:
-      type: object
-      properties:
-        lineId:
-          type: string
-        itemId:
-          type: string
-        orderedQuantity:
-          type: number
-        pickedQuantity:
-          type: number
-        shippedQuantity:
-          type: number
-        uom:
-          type: string
-        status:
-          type: string
-    ShipmentConfirmRequest:
-      type: object
-      required:
-      - carrier
-      - trackingNumber
-      properties:
-        carrier:
-          type: string
-        trackingNumber:
-          type: string
-        shippedAt:
-          type: string
-          format: date-time
-        weight:
-          type: number
-        weightUom:
-          type: string
-    OutboundOrderListResponse:
-      type: object
-      properties:
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/OutboundOrder'
-        totalCount:
-          type: integer
     OutboundOrder:
       type: object
       properties:
@@ -178,6 +135,15 @@ components:
         shippedAt:
           type: string
           format: date-time
+    OutboundOrderListResponse:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutboundOrder'
+        totalCount:
+          type: integer
     ShipAddress:
       type: object
       properties:
@@ -196,6 +162,23 @@ components:
         country:
           type: string
         phone:
+          type: string
+    OutboundLine:
+      type: object
+      properties:
+        lineId:
+          type: string
+        itemId:
+          type: string
+        orderedQuantity:
+          type: number
+        pickedQuantity:
+          type: number
+        shippedQuantity:
+          type: number
+        uom:
+          type: string
+        status:
           type: string
     OutboundOrderCreateRequest:
       type: object
@@ -230,6 +213,23 @@ components:
                 type: number
               uom:
                 type: string
+    ShipmentConfirmRequest:
+      type: object
+      required:
+      - carrier
+      - trackingNumber
+      properties:
+        carrier:
+          type: string
+        trackingNumber:
+          type: string
+        shippedAt:
+          type: string
+          format: date-time
+        weight:
+          type: number
+        weightUom:
+          type: string
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

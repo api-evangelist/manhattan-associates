@@ -98,14 +98,32 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    ReceiptLine:
+      type: object
+      properties:
+        lineId:
+          type: string
+        itemId:
+          type: string
+        expectedQuantity:
+          type: number
+        receivedQuantity:
+          type: number
+        uom:
+          type: string
+        lotNumber:
+          type: string
+        expirationDate:
+          type: string
+          format: date
     ReceiptCreateRequest:
       type: object
       required:
@@ -178,31 +196,13 @@ components:
           type: string
         lotNumber:
           type: string
-    ReceiptLine:
-      type: object
-      properties:
-        lineId:
-          type: string
-        itemId:
-          type: string
-        expectedQuantity:
-          type: number
-        receivedQuantity:
-          type: number
-        uom:
-          type: string
-        lotNumber:
-          type: string
-        expirationDate:
-          type: string
-          format: date
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

@@ -40,33 +40,6 @@ paths:
                 $ref: '#/components/schemas/PromiseResponse'
 components:
   schemas:
-    Address:
-      type: object
-      required:
-      - street1
-      - city
-      - state
-      - postalCode
-      - country
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
-        phone:
-          type: string
     PromiseResponse:
       type: object
       properties:
@@ -120,6 +93,33 @@ components:
         requestedDeliveryDate:
           type: string
           format: date
+    Address:
+      type: object
+      required:
+      - street1
+      - city
+      - state
+      - postalCode
+      - country
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+        phone:
+          type: string
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2
