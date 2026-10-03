@@ -138,74 +138,15 @@ paths:
       description: Manhattan Active Supply Chain (WMS) REST API
 components:
   schemas:
-    AvailabilityRequest:
+    InventoryPositionListResponse:
       type: object
-      required:
-      - items
       properties:
-        items:
+        positions:
           type: array
           items:
-            type: object
-            required:
-            - itemId
-            - quantity
-            properties:
-              itemId:
-                type: string
-              quantity:
-                type: number
-        deliveryAddress:
-          $ref: '#/components/schemas/Address'
-        channelId:
-          type: string
-    Address:
-      type: object
-      required:
-      - street1
-      - city
-      - state
-      - postalCode
-      - country
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
-        phone:
-          type: string
-    InventoryPosition:
-      type: object
-      properties:
-        itemId:
-          type: string
-        locationId:
-          type: string
-        locationName:
-          type: string
-        onHand:
-          type: number
-        reserved:
-          type: number
-        available:
-          type: number
-        onOrder:
-          type: number
-        updatedAt:
-          type: string
-          format: date-time
+            $ref: '#/components/schemas/InventoryPosition'
+        totalCount:
+          type: integer
     AvailabilityResponse:
       type: object
       properties:
@@ -236,32 +177,40 @@ components:
                       type: string
                     availableQuantity:
                       type: number
-    InventoryPositionListResponse:
-      type: object
-      properties:
-        positions:
-          type: array
-          items:
-            $ref: '#/components/schemas/InventoryPosition'
-        totalCount:
-          type: integer
-    TransferRequest:
+    Address:
       type: object
       required:
-      - facilityId
-      - fromLocationId
-      - toLocationId
-      - lines
+      - street1
+      - city
+      - state
+      - postalCode
+      - country
       properties:
-        facilityId:
+        firstName:
           type: string
-        fromLocationId:
+        lastName:
           type: string
-        toLocationId:
+        street1:
           type: string
-        lines:
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+        phone:
+          type: string
+    AvailabilityRequest:
+      type: object
+      required:
+      - items
+      properties:
+        items:
           type: array
-          minItems: 1
           items:
             type: object
             required:
@@ -272,41 +221,27 @@ components:
                 type: string
               quantity:
                 type: number
-              lotNumber:
-                type: string
-    WarehouseInventoryResponse:
-      type: object
-      properties:
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/WarehouseInventoryRecord'
-        totalCount:
-          type: integer
-    WarehouseInventoryRecord:
+        deliveryAddress:
+          $ref: '#/components/schemas/Address'
+        channelId:
+          type: string
+    InventoryPosition:
       type: object
       properties:
         itemId:
-          type: string
-        facilityId:
           type: string
         locationId:
           type: string
         locationName:
           type: string
-        lotNumber:
-          type: string
-        onHandQuantity:
+        onHand:
           type: number
-        allocatedQuantity:
+        reserved:
           type: number
-        availableQuantity:
+        available:
           type: number
-        uom:
-          type: string
-        expirationDate:
-          type: string
-          format: date
+        onOrder:
+          type: number
         updatedAt:
           type: string
           format: date-time
@@ -339,6 +274,71 @@ components:
           - in_progress
           - completed
         createdAt:
+          type: string
+          format: date-time
+    WarehouseInventoryResponse:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/WarehouseInventoryRecord'
+        totalCount:
+          type: integer
+    TransferRequest:
+      type: object
+      required:
+      - facilityId
+      - fromLocationId
+      - toLocationId
+      - lines
+      properties:
+        facilityId:
+          type: string
+        fromLocationId:
+          type: string
+        toLocationId:
+          type: string
+        lines:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+            - itemId
+            - quantity
+            properties:
+              itemId:
+                type: string
+              quantity:
+                type: number
+              lotNumber:
+                type: string
+    WarehouseInventoryRecord:
+      type: object
+      properties:
+        itemId:
+          type: string
+        facilityId:
+          type: string
+        locationId:
+          type: string
+        locationName:
+          type: string
+        lotNumber:
+          type: string
+        onHandQuantity:
+          type: number
+        allocatedQuantity:
+          type: number
+        availableQuantity:
+          type: number
+        uom:
+          type: string
+        expirationDate:
+          type: string
+          format: date
+        updatedAt:
           type: string
           format: date-time
   securitySchemes:

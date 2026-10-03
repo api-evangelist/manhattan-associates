@@ -103,83 +103,6 @@ paths:
                 $ref: '#/components/schemas/OutboundOrder'
 components:
   schemas:
-    OutboundOrder:
-      type: object
-      properties:
-        orderId:
-          type: string
-        externalOrderId:
-          type: string
-        facilityId:
-          type: string
-        status:
-          type: string
-          enum:
-          - released
-          - picking
-          - packing
-          - ready_to_ship
-          - shipped
-        shipToAddress:
-          $ref: '#/components/schemas/ShipAddress'
-        lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/OutboundLine'
-        waveId:
-          type: string
-        carrier:
-          type: string
-        trackingNumber:
-          type: string
-        shippedAt:
-          type: string
-          format: date-time
-    OutboundOrderListResponse:
-      type: object
-      properties:
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/OutboundOrder'
-        totalCount:
-          type: integer
-    ShipAddress:
-      type: object
-      properties:
-        name:
-          type: string
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
-        phone:
-          type: string
-    OutboundLine:
-      type: object
-      properties:
-        lineId:
-          type: string
-        itemId:
-          type: string
-        orderedQuantity:
-          type: number
-        pickedQuantity:
-          type: number
-        shippedQuantity:
-          type: number
-        uom:
-          type: string
-        status:
-          type: string
     OutboundOrderCreateRequest:
       type: object
       required:
@@ -213,6 +136,83 @@ components:
                 type: number
               uom:
                 type: string
+    OutboundLine:
+      type: object
+      properties:
+        lineId:
+          type: string
+        itemId:
+          type: string
+        orderedQuantity:
+          type: number
+        pickedQuantity:
+          type: number
+        shippedQuantity:
+          type: number
+        uom:
+          type: string
+        status:
+          type: string
+    OutboundOrderListResponse:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutboundOrder'
+        totalCount:
+          type: integer
+    OutboundOrder:
+      type: object
+      properties:
+        orderId:
+          type: string
+        externalOrderId:
+          type: string
+        facilityId:
+          type: string
+        status:
+          type: string
+          enum:
+          - released
+          - picking
+          - packing
+          - ready_to_ship
+          - shipped
+        shipToAddress:
+          $ref: '#/components/schemas/ShipAddress'
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutboundLine'
+        waveId:
+          type: string
+        carrier:
+          type: string
+        trackingNumber:
+          type: string
+        shippedAt:
+          type: string
+          format: date-time
+    ShipAddress:
+      type: object
+      properties:
+        name:
+          type: string
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+        phone:
+          type: string
     ShipmentConfirmRequest:
       type: object
       required:
