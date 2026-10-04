@@ -40,6 +40,31 @@ paths:
                 $ref: '#/components/schemas/PromiseResponse'
 components:
   schemas:
+    PromiseRequest:
+      type: object
+      required:
+      - lines
+      - deliveryAddress
+      properties:
+        lines:
+          type: array
+          items:
+            type: object
+            required:
+            - itemId
+            - quantity
+            properties:
+              itemId:
+                type: string
+              quantity:
+                type: number
+        deliveryAddress:
+          $ref: '#/components/schemas/Address'
+        channelId:
+          type: string
+        requestedDeliveryDate:
+          type: string
+          format: date
     Address:
       type: object
       required:
@@ -95,31 +120,6 @@ components:
                       type: string
                     promisedQuantity:
                       type: number
-    PromiseRequest:
-      type: object
-      required:
-      - lines
-      - deliveryAddress
-      properties:
-        lines:
-          type: array
-          items:
-            type: object
-            required:
-            - itemId
-            - quantity
-            properties:
-              itemId:
-                type: string
-              quantity:
-                type: number
-        deliveryAddress:
-          $ref: '#/components/schemas/Address'
-        channelId:
-          type: string
-        requestedDeliveryDate:
-          type: string
-          format: date
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

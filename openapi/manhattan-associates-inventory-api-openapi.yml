@@ -138,45 +138,6 @@ paths:
       description: Manhattan Active Supply Chain (WMS) REST API
 components:
   schemas:
-    InventoryPositionListResponse:
-      type: object
-      properties:
-        positions:
-          type: array
-          items:
-            $ref: '#/components/schemas/InventoryPosition'
-        totalCount:
-          type: integer
-    AvailabilityResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: object
-            properties:
-              itemId:
-                type: string
-              requestedQuantity:
-                type: number
-              availableQuantity:
-                type: number
-              available:
-                type: boolean
-              availabilityDate:
-                type: string
-                format: date
-              nodes:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    nodeId:
-                      type: string
-                    nodeName:
-                      type: string
-                    availableQuantity:
-                      type: number
     Address:
       type: object
       required:
@@ -225,6 +186,36 @@ components:
           $ref: '#/components/schemas/Address'
         channelId:
           type: string
+    AvailabilityResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              itemId:
+                type: string
+              requestedQuantity:
+                type: number
+              availableQuantity:
+                type: number
+              available:
+                type: boolean
+              availabilityDate:
+                type: string
+                format: date
+              nodes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    nodeId:
+                      type: string
+                    nodeName:
+                      type: string
+                    availableQuantity:
+                      type: number
     InventoryPosition:
       type: object
       properties:
@@ -242,6 +233,42 @@ components:
           type: number
         onOrder:
           type: number
+        updatedAt:
+          type: string
+          format: date-time
+    InventoryPositionListResponse:
+      type: object
+      properties:
+        positions:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryPosition'
+        totalCount:
+          type: integer
+    WarehouseInventoryRecord:
+      type: object
+      properties:
+        itemId:
+          type: string
+        facilityId:
+          type: string
+        locationId:
+          type: string
+        locationName:
+          type: string
+        lotNumber:
+          type: string
+        onHandQuantity:
+          type: number
+        allocatedQuantity:
+          type: number
+        availableQuantity:
+          type: number
+        uom:
+          type: string
+        expirationDate:
+          type: string
+          format: date
         updatedAt:
           type: string
           format: date-time
@@ -314,33 +341,6 @@ components:
                 type: number
               lotNumber:
                 type: string
-    WarehouseInventoryRecord:
-      type: object
-      properties:
-        itemId:
-          type: string
-        facilityId:
-          type: string
-        locationId:
-          type: string
-        locationName:
-          type: string
-        lotNumber:
-          type: string
-        onHandQuantity:
-          type: number
-        allocatedQuantity:
-          type: number
-        availableQuantity:
-          type: number
-        uom:
-          type: string
-        expirationDate:
-          type: string
-          format: date
-        updatedAt:
-          type: string
-          format: date-time
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

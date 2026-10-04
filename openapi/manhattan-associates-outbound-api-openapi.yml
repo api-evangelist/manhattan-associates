@@ -136,32 +136,6 @@ components:
                 type: number
               uom:
                 type: string
-    OutboundLine:
-      type: object
-      properties:
-        lineId:
-          type: string
-        itemId:
-          type: string
-        orderedQuantity:
-          type: number
-        pickedQuantity:
-          type: number
-        shippedQuantity:
-          type: number
-        uom:
-          type: string
-        status:
-          type: string
-    OutboundOrderListResponse:
-      type: object
-      properties:
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/OutboundOrder'
-        totalCount:
-          type: integer
     OutboundOrder:
       type: object
       properties:
@@ -194,6 +168,23 @@ components:
         shippedAt:
           type: string
           format: date-time
+    OutboundLine:
+      type: object
+      properties:
+        lineId:
+          type: string
+        itemId:
+          type: string
+        orderedQuantity:
+          type: number
+        pickedQuantity:
+          type: number
+        shippedQuantity:
+          type: number
+        uom:
+          type: string
+        status:
+          type: string
     ShipAddress:
       type: object
       properties:
@@ -230,6 +221,15 @@ components:
           type: number
         weightUom:
           type: string
+    OutboundOrderListResponse:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutboundOrder'
+        totalCount:
+          type: integer
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

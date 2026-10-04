@@ -99,6 +99,38 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ReceiptLine:
+      type: object
+      properties:
+        lineId:
+          type: string
+        itemId:
+          type: string
+        expectedQuantity:
+          type: number
+        receivedQuantity:
+          type: number
+        uom:
+          type: string
+        lotNumber:
+          type: string
+        expirationDate:
+          type: string
+          format: date
+    ReceiptLineRequest:
+      type: object
+      required:
+      - itemId
+      - expectedQuantity
+      properties:
+        itemId:
+          type: string
+        expectedQuantity:
+          type: number
+        uom:
+          type: string
+        lotNumber:
+          type: string
     ReceiptCreateRequest:
       type: object
       required:
@@ -120,6 +152,15 @@ components:
           minItems: 1
           items:
             $ref: '#/components/schemas/ReceiptLineRequest'
+    ReceiptListResponse:
+      type: object
+      properties:
+        receipts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Receipt'
+        totalCount:
+          type: integer
     Receipt:
       type: object
       properties:
@@ -148,15 +189,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    ReceiptListResponse:
-      type: object
-      properties:
-        receipts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Receipt'
-        totalCount:
-          type: integer
     ErrorResponse:
       type: object
       properties:
@@ -164,38 +196,6 @@ components:
           type: string
         message:
           type: string
-    ReceiptLineRequest:
-      type: object
-      required:
-      - itemId
-      - expectedQuantity
-      properties:
-        itemId:
-          type: string
-        expectedQuantity:
-          type: number
-        uom:
-          type: string
-        lotNumber:
-          type: string
-    ReceiptLine:
-      type: object
-      properties:
-        lineId:
-          type: string
-        itemId:
-          type: string
-        expectedQuantity:
-          type: number
-        receivedQuantity:
-          type: number
-        uom:
-          type: string
-        lotNumber:
-          type: string
-        expirationDate:
-          type: string
-          format: date
   responses:
     NotFound:
       description: Resource not found
