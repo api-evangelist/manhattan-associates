@@ -194,6 +194,12 @@ apis:
   - type: Documentation
     url: https://supplychain.developer.manh.com/
 common:
+- type: Plans
+  url: plans/manhattan-associates-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/manhattan-associates-rate-limits.yml
+- type: FinOps
+  url: finops/manhattan-associates-finops.yml
 - type: CapabilityMap
   url: capabilities/manhattan-associates-capability-edges.yml
   name: Manhattan Associates Business Capability Map
