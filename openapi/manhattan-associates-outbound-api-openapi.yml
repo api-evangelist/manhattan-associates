@@ -103,39 +103,15 @@ paths:
                 $ref: '#/components/schemas/OutboundOrder'
 components:
   schemas:
-    OutboundOrderCreateRequest:
+    OutboundOrderListResponse:
       type: object
-      required:
-      - facilityId
-      - shipToAddress
-      - lines
       properties:
-        externalOrderId:
-          type: string
-        facilityId:
-          type: string
-        shipToAddress:
-          $ref: '#/components/schemas/ShipAddress'
-        requestedShipDate:
-          type: string
-          format: date
-        carrier:
-          type: string
-        lines:
+        orders:
           type: array
-          minItems: 1
           items:
-            type: object
-            required:
-            - itemId
-            - quantity
-            properties:
-              itemId:
-                type: string
-              quantity:
-                type: number
-              uom:
-                type: string
+            $ref: '#/components/schemas/OutboundOrder'
+        totalCount:
+          type: integer
     OutboundOrder:
       type: object
       properties:
@@ -168,6 +144,23 @@ components:
         shippedAt:
           type: string
           format: date-time
+    ShipmentConfirmRequest:
+      type: object
+      required:
+      - carrier
+      - trackingNumber
+      properties:
+        carrier:
+          type: string
+        trackingNumber:
+          type: string
+        shippedAt:
+          type: string
+          format: date-time
+        weight:
+          type: number
+        weightUom:
+          type: string
     OutboundLine:
       type: object
       properties:
@@ -204,32 +197,39 @@ components:
           type: string
         phone:
           type: string
-    ShipmentConfirmRequest:
+    OutboundOrderCreateRequest:
       type: object
       required:
-      - carrier
-      - trackingNumber
+      - facilityId
+      - shipToAddress
+      - lines
       properties:
+        externalOrderId:
+          type: string
+        facilityId:
+          type: string
+        shipToAddress:
+          $ref: '#/components/schemas/ShipAddress'
+        requestedShipDate:
+          type: string
+          format: date
         carrier:
           type: string
-        trackingNumber:
-          type: string
-        shippedAt:
-          type: string
-          format: date-time
-        weight:
-          type: number
-        weightUom:
-          type: string
-    OutboundOrderListResponse:
-      type: object
-      properties:
-        orders:
+        lines:
           type: array
+          minItems: 1
           items:
-            $ref: '#/components/schemas/OutboundOrder'
-        totalCount:
-          type: integer
+            type: object
+            required:
+            - itemId
+            - quantity
+            properties:
+              itemId:
+                type: string
+              quantity:
+                type: number
+              uom:
+                type: string
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

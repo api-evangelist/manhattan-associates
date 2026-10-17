@@ -184,24 +184,53 @@ paths:
               schema:
                 $ref: '#/components/schemas/Order'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    OrderLineRequest:
+    Address:
       type: object
       required:
-      - itemId
-      - quantity
+      - street1
+      - city
+      - state
+      - postalCode
+      - country
       properties:
-        externalLineId:
+        firstName:
           type: string
-        itemId:
+        lastName:
           type: string
-        sku:
+        street1:
           type: string
-        quantity:
-          type: number
-          minimum: 1
-        unitPrice:
-          type: number
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+        phone:
+          type: string
     OrderCreateRequest:
       type: object
       required:
@@ -231,6 +260,35 @@ components:
             $ref: '#/components/schemas/OrderLineRequest'
         shippingMethod:
           type: string
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+    OrderListResponse:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        totalCount:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
     Fulfillment:
       type: object
       properties:
@@ -259,33 +317,6 @@ components:
         shippedAt:
           type: string
           format: date-time
-    Address:
-      type: object
-      required:
-      - street1
-      - city
-      - state
-      - postalCode
-      - country
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
-        phone:
-          type: string
     OrderLine:
       type: object
       properties:
@@ -314,6 +345,38 @@ components:
           - cancelled
         fulfillmentNodeId:
           type: string
+    OrderUpdateRequest:
+      type: object
+      properties:
+        shippingAddress:
+          $ref: '#/components/schemas/Address'
+        requiredDeliveryDate:
+          type: string
+          format: date
+        addLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderLineRequest'
+        removeLineIds:
+          type: array
+          items:
+            type: string
+    OrderTotals:
+      type: object
+      properties:
+        subtotal:
+          type: number
+        taxTotal:
+          type: number
+        shippingTotal:
+          type: number
+        discountTotal:
+          type: number
+        orderTotal:
+          type: number
+        currency:
+          type: string
+          default: USD
     Order:
       type: object
       properties:
@@ -360,86 +423,23 @@ components:
         updatedAt:
           type: string
           format: date-time
-    OrderUpdateRequest:
+    OrderLineRequest:
       type: object
+      required:
+      - itemId
+      - quantity
       properties:
-        shippingAddress:
-          $ref: '#/components/schemas/Address'
-        requiredDeliveryDate:
+        externalLineId:
           type: string
-          format: date
-        addLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderLineRequest'
-        removeLineIds:
-          type: array
-          items:
-            type: string
-    OrderTotals:
-      type: object
-      properties:
-        subtotal:
-          type: number
-        taxTotal:
-          type: number
-        shippingTotal:
-          type: number
-        discountTotal:
-          type: number
-        orderTotal:
-          type: number
-        currency:
+        itemId:
           type: string
-          default: USD
-    ErrorResponse:
-      type: object
-      properties:
-        code:
+        sku:
           type: string
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-    OrderListResponse:
-      type: object
-      properties:
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
-        totalCount:
-          type: integer
-        limit:
-          type: integer
-        offset:
-          type: integer
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+        quantity:
+          type: number
+          minimum: 1
+        unitPrice:
+          type: number
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

@@ -138,33 +138,15 @@ paths:
       description: Manhattan Active Supply Chain (WMS) REST API
 components:
   schemas:
-    Address:
+    InventoryPositionListResponse:
       type: object
-      required:
-      - street1
-      - city
-      - state
-      - postalCode
-      - country
       properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
-        phone:
-          type: string
+        positions:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryPosition'
+        totalCount:
+          type: integer
     AvailabilityRequest:
       type: object
       required:
@@ -236,42 +218,33 @@ components:
         updatedAt:
           type: string
           format: date-time
-    InventoryPositionListResponse:
+    Address:
       type: object
+      required:
+      - street1
+      - city
+      - state
+      - postalCode
+      - country
       properties:
-        positions:
-          type: array
-          items:
-            $ref: '#/components/schemas/InventoryPosition'
-        totalCount:
-          type: integer
-    WarehouseInventoryRecord:
-      type: object
-      properties:
-        itemId:
+        firstName:
           type: string
-        facilityId:
+        lastName:
           type: string
-        locationId:
+        street1:
           type: string
-        locationName:
+        street2:
           type: string
-        lotNumber:
+        city:
           type: string
-        onHandQuantity:
-          type: number
-        allocatedQuantity:
-          type: number
-        availableQuantity:
-          type: number
-        uom:
+        state:
           type: string
-        expirationDate:
+        postalCode:
           type: string
-          format: date
-        updatedAt:
+        country:
           type: string
-          format: date-time
+        phone:
+          type: string
     Transfer:
       type: object
       properties:
@@ -341,6 +314,33 @@ components:
                 type: number
               lotNumber:
                 type: string
+    WarehouseInventoryRecord:
+      type: object
+      properties:
+        itemId:
+          type: string
+        facilityId:
+          type: string
+        locationId:
+          type: string
+        locationName:
+          type: string
+        lotNumber:
+          type: string
+        onHandQuantity:
+          type: number
+        allocatedQuantity:
+          type: number
+        availableQuantity:
+          type: number
+        uom:
+          type: string
+        expirationDate:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date-time
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2
