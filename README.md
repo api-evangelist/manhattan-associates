@@ -1,4 +1,4 @@
-# manhattan-associates (manhattan-associates)
+# Manhattan Associates
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,144 +66,194 @@
 
 Manhattan Associates is a leading provider of supply chain commerce solutions, enabling unified commerce across stores, warehouses, and inventory across the supply chain.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/apis.yml)
+**Areas:** Logistics · Supply Chain · Platform · Software-as-a-Service · Transportation
 
-## Timestamps
+## Manhattan Associates on APIs.io
 
-- **Modified:** 2026-05-19
+Everything profiled for Manhattan Associates is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/manhattan-associates/](https://apis.io/providers/manhattan-associates/)** — or go straight to one of the APIs or properties below.
 
-## APIs
+### APIs (9)
 
-### Manhattan Active Platform API
+- [Manhattan Active Platform API](https://apis.io/apis/manhattan-associates/manhattan-active-platform-api/) — Manhattan Active Platform APIs provide core platform capabilities for authentication, tenant configuration, and integration with Manhattan Active solutions.…
+- [Manhattan Active Supply Chain Planning API](https://apis.io/apis/manhattan-associates/manhattan-active-supply-chain-planning-api/) — Manhattan Active Supply Chain Planning APIs provide demand forecasting, inventory optimization, and replenishment planning capabilities to optimize stock…
+- [Manhattan Associates TMS/WMS API](https://apis.io/apis/manhattan-associates/manhattan-associates-api/) — Manhattan Associates provides warehouse management (WMS) and transportation management (TMS) APIs for supply chain execution. APIs enable order management,…
+- [manhattan-associates Inbound API](https://apis.io/apis/manhattan-associates/manhattan-associates-inbound-api/) — ASN and receipt management
+- [manhattan-associates Inventory API](https://apis.io/apis/manhattan-associates/manhattan-associates-inventory-api/) — Real-time inventory positions and ATP
+- [manhattan-associates Orders API](https://apis.io/apis/manhattan-associates/manhattan-associates-orders-api/) — Order lifecycle and management
+- [manhattan-associates Outbound API](https://apis.io/apis/manhattan-associates/manhattan-associates-outbound-api/) — Outbound order fulfillment and shipment
+- [manhattan-associates Promising API](https://apis.io/apis/manhattan-associates/manhattan-associates-promising-api/) — Order promising and delivery date estimation
+- [manhattan-associates Returns API](https://apis.io/apis/manhattan-associates/manhattan-associates-returns-api/) — Return and exchange processing
 
-Manhattan Active Platform APIs provide core platform capabilities for authentication, tenant configuration, and integration with Manhattan Active solutions. REST APIs follow OAuth client credentials flows and require platform administrator setup.
+### Published properties
 
-- **Human URL:** [https://platform.developer.manh.com/](https://platform.developer.manh.com/)
-- **Base URL:** `https://api.developer.manh.com`
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-#### Tags
+#### Agentic access (1)
 
-- Logistics
-- Platform
-- SaaS
-- Supply Chain
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Properties
+- [Manhattan Associates Agentic Access](https://apis.io/agentic-access/manhattan-associates/manhattan-associates-agentic-access/)
 
-- [Documentation](https://platform.developer.manh.com/)
-- [Getting Started](https://developer.manh.com/docs/getting-started)
-- [Authentication](https://developer.manh.com/docs/how-to/rest-api/)
-- [Postman Collection](collections/manhattan-associates-omni.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manhattan-associates-omni.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/manhattan-associates-wms.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manhattan-associates-wms.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### JSON Schema (33)
 
-### Manhattan Active Omni and Enterprise Promise & Fulfill API
+The data models the API reads and writes.
 
-Manhattan Active Omni APIs enable omnichannel order management and fulfillment, including order promising, order orchestration, inventory availability, and customer service operations for retail and distribution.
+- [Address](https://apis.io/schemas/manhattan-associates/manhattan-associates-address/)
+- [AvailabilityRequest](https://apis.io/schemas/manhattan-associates/manhattan-associates-availabilityrequest/)
+- [AvailabilityResponse](https://apis.io/schemas/manhattan-associates/manhattan-associates-availabilityresponse/)
+- [ErrorResponse](https://apis.io/schemas/manhattan-associates/manhattan-associates-errorresponse/)
+- [Fulfillment](https://apis.io/schemas/manhattan-associates/manhattan-associates-fulfillment/)
+- [InventoryPosition](https://apis.io/schemas/manhattan-associates/manhattan-associates-inventoryposition/)
+- [InventoryPositionListResponse](https://apis.io/schemas/manhattan-associates/manhattan-associates-inventorypositionlistresponse/)
+- [Manhattan Active Order](https://apis.io/schemas/manhattan-associates/manhattan-associates-order/)
+- [OrderCreateRequest](https://apis.io/schemas/manhattan-associates/manhattan-associates-ordercreaterequest/)
+- [OrderLine](https://apis.io/schemas/manhattan-associates/manhattan-associates-orderline/)
+- [OrderLineRequest](https://apis.io/schemas/manhattan-associates/manhattan-associates-orderlinerequest/)
+- [OrderListResponse](https://apis.io/schemas/manhattan-associates/manhattan-associates-orderlistresponse/)
+- [OrderTotals](https://apis.io/schemas/manhattan-associates/manhattan-associates-ordertotals/)
+- [OrderUpdateRequest](https://apis.io/schemas/manhattan-associates/manhattan-associates-orderupdaterequest/)
+- [OutboundLine](https://apis.io/schemas/manhattan-associates/manhattan-associates-outboundline/)
+- [OutboundOrder](https://apis.io/schemas/manhattan-associates/manhattan-associates-outboundorder/)
+- [OutboundOrderCreateRequest](https://apis.io/schemas/manhattan-associates/manhattan-associates-outboundordercreaterequest/)
+- [OutboundOrderListResponse](https://apis.io/schemas/manhattan-associates/manhattan-associates-outboundorderlistresponse/)
+- [PromiseRequest](https://apis.io/schemas/manhattan-associates/manhattan-associates-promiserequest/)
+- [PromiseResponse](https://apis.io/schemas/manhattan-associates/manhattan-associates-promiseresponse/)
+- [Receipt](https://apis.io/schemas/manhattan-associates/manhattan-associates-receipt/)
+- [ReceiptCreateRequest](https://apis.io/schemas/manhattan-associates/manhattan-associates-receiptcreaterequest/)
+- [ReceiptLine](https://apis.io/schemas/manhattan-associates/manhattan-associates-receiptline/)
+- [ReceiptLineRequest](https://apis.io/schemas/manhattan-associates/manhattan-associates-receiptlinerequest/)
+- [ReceiptListResponse](https://apis.io/schemas/manhattan-associates/manhattan-associates-receiptlistresponse/)
+- …and 8 more published on APIs.io
 
-- **Human URL:** [https://omni.developer.manh.com/](https://omni.developer.manh.com/)
-- **Base URL:** `https://api.developer.manh.com`
+#### JSON Structure (1)
 
-#### Tags
+Data models expressed in JSON Structure.
 
-- Fulfillment
-- Logistics
-- Omnichannel
-- Order Management
+- [Manhattan Associates Structure](https://apis.io/json-structure/manhattan-associates/manhattan-associates-structure/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://omni.developer.manh.com/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld)
-- [Postman Collection](collections/manhattan-associates-omni.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manhattan-associates-omni.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/manhattan-associates-wms.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manhattan-associates-wms.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Linked-data contexts for the provider's vocabulary.
 
-### Manhattan Active Supply Chain API
+- [Manhattan Associates Context](https://apis.io/jsonld/manhattan-associates/manhattan-associates-context/)
 
-Manhattan Active Supply Chain APIs provide warehouse management (WMS) capabilities including inventory tracking, order processing, labor management, yard management, and shipment execution for distribution center operations.
+#### Vocabulary (1)
 
-- **Human URL:** [https://supplychain.developer.manh.com/](https://supplychain.developer.manh.com/)
-- **Base URL:** `https://api.developer.manh.com`
+The provider's domain terms, defined.
 
-#### Tags
+- [Manhattan-Associates Domain Vocabulary](https://apis.io/vocabularies/manhattan-associates/manhattan-associates-vocabulary/)
 
-- Logistics
-- Supply Chain
-- Warehouse
-- WMS
+#### Collections (8)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://supplychain.developer.manh.com/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/manhattan-associates-omni.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manhattan-associates-omni.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/manhattan-associates-wms.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manhattan-associates-wms.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Manhattan Active Omni Order Management Inbound API](https://apis.io/collections/manhattan-associates/open-manhattan-associates-inbound-api/)
+- [Manhattan Active Omni Order Management Inbound Inventory API](https://apis.io/collections/manhattan-associates/open-manhattan-associates-inventory-api/)
+- [Manhattan Active Omni Order Management API](https://apis.io/collections/manhattan-associates/open-manhattan-associates-omni/)
+- [Manhattan Active Omni Order Management Inbound Orders API](https://apis.io/collections/manhattan-associates/open-manhattan-associates-orders-api/)
+- [Manhattan Active Omni Order Management Inbound Outbound API](https://apis.io/collections/manhattan-associates/open-manhattan-associates-outbound-api/)
+- [Manhattan Active Omni Order Management Inbound Promising API](https://apis.io/collections/manhattan-associates/open-manhattan-associates-promising-api/)
+- [Manhattan Active Omni Order Management Inbound Returns API](https://apis.io/collections/manhattan-associates/open-manhattan-associates-returns-api/)
+- [Manhattan Active Supply Chain (WMS) API](https://apis.io/collections/manhattan-associates/open-manhattan-associates-wms/)
 
-### Manhattan Active Supply Chain Planning API
+#### Governance rules (1)
 
-Manhattan Active Supply Chain Planning APIs provide demand forecasting, inventory optimization, and replenishment planning capabilities to optimize stock levels and reduce carrying costs across supply chain networks.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://scp.developer.manh.com/](https://scp.developer.manh.com/)
-- **Base URL:** `https://api.developer.manh.com`
+- [Manhattan Associates — jsonschema rules](https://apis.io/rules/manhattan-associates/manhattan-associates-jsonschema-spectral-rules/)
 
-#### Tags
+#### Security (2)
 
-- Inventory Planning
-- Logistics
-- Planning
-- Supply Chain
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Manhattan Associates Authentication](https://apis.io/security/manhattan-associates/manhattan-associates-authentication/)
+- [Manhattan Associates Domain Security](https://apis.io/security/manhattan-associates/manhattan-associates-domain-security/)
 
-- [Documentation](https://scp.developer.manh.com/)
-- [Postman Collection](collections/manhattan-associates-omni.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manhattan-associates-omni.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/manhattan-associates-wms.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manhattan-associates-wms.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### OAuth scopes (1)
 
-### Manhattan Associates TMS/WMS API
+The permissions the API asks for.
 
-Manhattan Associates provides warehouse management (WMS) and transportation management (TMS) APIs for supply chain execution. APIs enable order management, inventory tracking, shipment planning, labor management, and yard management for distribution and logistics operations.
+- [Manhattan Associates Scopes](https://apis.io/scopes/manhattan-associates/manhattan-associates-scopes/)
 
-- **Human URL:** [https://www.manh.com/](https://www.manh.com/)
-- **Base URL:** `https://api.manh.example.com`
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Logistics
-- Supply Chain
-- Transportation
-- Warehouse
+- [Manhattan Associates Plans Pricing](https://apis.io/plans/manhattan-associates/manhattan-associates-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://www.manh.com/)
-- [Postman Collection](collections/manhattan-associates-omni.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manhattan-associates-omni.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/manhattan-associates-wms.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/manhattan-associates-wms.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-## Common Properties
+- [Manhattan Associates Rate Limits](https://apis.io/rate-limits/manhattan-associates/manhattan-associates-rate-limits/)
 
-- [LinkedIn](https://www.linkedin.com/company/manhattan-associates)
-- [Portal](https://developer.manh.com/)
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Manhattan Associates Finops](https://apis.io/finops/manhattan-associates/manhattan-associates-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.manh.com/)
-- [Getting Started](https://developer.manh.com/docs/getting-started)
-- [Authentication](https://developer.manh.com/docs/how-to/rest-api/)
 - [Documentation](https://api.developer.manh.com/)
-- [Terms of Service](https://www.manh.com/terms-of-use)
-- [Privacy Policy](https://www.manh.com/privacy-policy)
-- [Blog](https://www.manh.com/our-insights/resources/blog)
+- [Getting started](https://developer.manh.com/docs/getting-started)
 - [Support](https://www.manh.com/trust-center)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-omni-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/openapi/manhattan-associates-wms-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-schema/manhattan-associates-order-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/manhattan-associates/refs/heads/main/json-ld/manhattan-associates-context.jsonld)
-- [Integrations](https://www.manh.com/about-us/partners)
+- [Blog](https://www.manh.com/our-insights/resources/blog)
+- [Terms of service](https://www.manh.com/terms-of-use)
+- [Privacy policy](https://www.manh.com/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 38.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 51.8 |
+| Contract quality | 61.8 |
+| Contract governance | 9.8 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 40.5 |
+| Access clarity | 26.3 |
+
+**Agent readiness 22.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/manhattan-associates/](https://apis.io/providers/manhattan-associates/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Manhattan Associates: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/manhattan-associates/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
